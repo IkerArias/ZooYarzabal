@@ -1,6 +1,7 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
@@ -33,6 +34,7 @@ public class VentanaPrincipal {
         JPanel pnlBotones = new JPanel();
         // Panel imagen
         JPanel pnlImagen = new JPanel();
+        pnlImagen.setBackground(Color.black);
         JPanel pnlNorte = new JPanel();
         
         pnlNorte.add(lblTitulo);
