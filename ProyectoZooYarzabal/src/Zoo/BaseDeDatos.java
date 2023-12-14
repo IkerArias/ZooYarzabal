@@ -16,7 +16,7 @@ public class BaseDeDatos {
 		// Establecemos la conexión
 		try {
 			Class.forName("org.sqlite.JDBC");
-			connection = DriverManager.getConnection("jdbc:sqlite:ZOObd.db");
+			connection = DriverManager.getConnection("jdbc:sqlite:C:/Users/unaio/Documents/mi_base_de_datos_exportada.db");
 			
 			// Empezamos a lanzar declaraciones
 			Statement statement = connection.createStatement();
