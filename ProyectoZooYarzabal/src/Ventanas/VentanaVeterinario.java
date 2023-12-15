@@ -10,7 +10,7 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.border.Border;
 
-import Zoo.Animal;
+import Zoo.AnimalAntiguo;
 import Zoo.AsignacionVet_Ani;
 import Zoo.Puesto;
 import Zoo.Trabajador;
@@ -22,7 +22,7 @@ public class VentanaVeterinario extends JFrame {
     protected JButton botonAsignar;
     protected JTextArea textoAsignaciones;
     protected JComboBox<Trabajador> comboVeterinarios;
-    protected JComboBox<Animal> comboAnimalesEnfermos;
+    protected JComboBox<AnimalAntiguo> comboAnimalesEnfermos;
     protected JComboBox<AsignacionVet_Ani> comboHistorialDeAsignaciones;
     protected JFrame vActual, vAnterior;
 
@@ -43,7 +43,7 @@ public class VentanaVeterinario extends JFrame {
         JPanel panelCombos = new JPanel();
         panelCombos.setLayout(new GridLayout(1, 2));
 
-        comboAnimalesEnfermos = new JComboBox<Animal>();
+        comboAnimalesEnfermos = new JComboBox<AnimalAntiguo>();
         Border bordeAnimalesEnfermos = BorderFactory.createTitledBorder("Animales enfermos: ");
         comboAnimalesEnfermos.setBorder(bordeAnimalesEnfermos);
         panelCombos.add(comboAnimalesEnfermos);

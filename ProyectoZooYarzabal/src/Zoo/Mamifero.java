@@ -1,6 +1,6 @@
 package Zoo;
 
-public class Mamifero extends Animal{
+public class Mamifero extends AnimalAntiguo{
 	
 	
 

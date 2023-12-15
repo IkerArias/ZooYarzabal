@@ -1,121 +1,44 @@
 package Zoo;
 
+import java.sql.Date;
+
 public class Animal {
-	
-	protected String nombre, descripcion;
-	protected int ID, edad;
-	protected Genero genero;
-	protected Trabajador cuidador;
-	protected boolean isPadre, isEnfermo;;
-
-	
-	//Constructores
-	public Animal(String nombre, int iD, Genero genero, int edad, Trabajador cuidador, String descripcion, boolean isPadre, boolean isEnfermo) {
-		super();
-		this.nombre = nombre;
-		ID = iD;
-		this.genero = genero;
-		this.edad = edad;
-		this.cuidador = cuidador;
-		this.descripcion = descripcion;
-		this.isPadre = isPadre;
-		this.isEnfermo = isEnfermo;
+	String id_animal, nombre, especie, habitat;
+	Date fecha_nacimiento;
+	public String getId_animal() {
+		return id_animal;
 	}
-
-	public Animal() {
-		
-		this.nombre = "";
-		ID = 0;
-		this.genero = null;
-		this.edad = 0;
-		this.cuidador = null;
-		this.descripcion = "";
-		this.isPadre = false;
-		this.isEnfermo = false;
+	public void setId_animal(String id_animal) {
+		this.id_animal = id_animal;
 	}
-	
-	//Getters y Setters
-
-	public boolean isEnfermo() {
-		return isEnfermo;
-	}
-
-	public void setEnfermo(boolean isEnfermo) {
-		this.isEnfermo = isEnfermo;
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public int getID() {
-		return ID;
+	public String getEspecie() {
+		return especie;
 	}
-
-	public void setID(int iD) {
-		ID = iD;
+	public void setEspecie(String especie) {
+		this.especie = especie;
 	}
-
-	public Genero getGenero() {
-		return genero;
+	public String getHabitat() {
+		return habitat;
 	}
-
-	public void setGenero(Genero genero) {
-		this.genero = genero;
+	public void setHabitat(String habitat) {
+		this.habitat = habitat;
 	}
-
-	public int getEdad() {
-		return edad;
+	public Date getFecha_nacimiento() {
+		return fecha_nacimiento;
 	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
+	public void setFecha_nacimiento(Date fecha_nacimiento) {
+		this.fecha_nacimiento = fecha_nacimiento;
 	}
-
-	public Trabajador getCuidador() {
-		return cuidador;
-	}
-
-	public void setCuidador(Trabajador cuidador) {
-		this.cuidador = cuidador;
-	}
-
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-
-	public boolean isPadre() {
-		return isPadre;
-	}
-
-	public void setPadre(boolean isPadre) {
-		this.isPadre = isPadre;
-	}
-
-	// To String
 	@Override
 	public String toString() {
-		return "Animal [nombre=" + nombre + ", descripcion=" + descripcion + ", ID=" + ID + ", edad=" + edad
-				+ ", genero=" + genero + ", cuidador=" + cuidador + ", isPadre=" + isPadre + ", isEnfermo=" + isEnfermo
-				+ "]";
+		return "Animal [id_animal=" + id_animal + ", nombre=" + nombre + ", especie=" + especie + ", habitat=" + habitat
+				+ ", fecha_nacimiento=" + fecha_nacimiento + "]";
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

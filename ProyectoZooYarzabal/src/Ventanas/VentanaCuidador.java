@@ -24,7 +24,7 @@ public class VentanaCuidador extends JFrame{
 	private JList<String> listaDeAnimales;
     private JTextArea informacionAnimal;
     private JButton botonModificar;
-    private ArrayList<Animal> animalesDelZoo;
+    private ArrayList<AnimalAntiguo> animalesDelZoo;
 	
 	public VentanaCuidador(JFrame va) {
 		super();
@@ -49,7 +49,7 @@ public class VentanaCuidador extends JFrame{
 
         // Crea un DefaultListModel para la JList
         DefaultListModel<String> modeloListaAnimales = new DefaultListModel<>();
-        for (Animal animal : animalesDelZoo) {
+        for (AnimalAntiguo animal : animalesDelZoo) {
             modeloListaAnimales.addElement(animal.getNombre());
         }
         
@@ -69,7 +69,7 @@ public class VentanaCuidador extends JFrame{
                 // Maneja la modificación del animal seleccionado aquí
                 int indiceSeleccionado = listaDeAnimales.getSelectedIndex();
                 if (indiceSeleccionado >= 0) {
-                    Animal animalSeleccionado = animalesDelZoo.get(indiceSeleccionado);
+                    AnimalAntiguo animalSeleccionado = animalesDelZoo.get(indiceSeleccionado);
                     // Implementa la lógica de modificación
                 }
             }

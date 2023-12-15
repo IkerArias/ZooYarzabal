@@ -12,7 +12,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import Zoo.Animal;
 import Zoo.Empleado;
+import Zoo.Exhibicion;
+import Zoo.Habitat;
+import Zoo.Visitante;
 
 public class VisualizarBD {
 	
@@ -73,5 +77,166 @@ public class VisualizarBD {
 		}
 		return conexion;
 	}
+	
+	public static Connection visualizarHabitats() {
+		try {
+			Class.forName("org.sqlite.JDBC");
+			conexion = DriverManager.getConnection("jdbc:sqlite:Zooyarzabal.db");
+			
+			try {
+				Statement statement = conexion.createStatement();
+				ArrayList<Habitat> habitats = new ArrayList<>();
+				String sent = "SELECT * FROM Habitats";
+				ResultSet rs = statement.executeQuery( sent );
+				while ( rs.next() ) {
+					String id_habitat = rs.getString( "id_habitat" );
+					String nombre = rs.getString( "nombre" );
+					String tipo = rs.getString( "tipo" );
+					
+					Habitat habitat = new Habitat();
+					habitat.setId_habitat(id_habitat);
+					habitat.setNombre(nombre);
+					habitat.setTipo(tipo);
+					
+					habitats.add(habitat);
+					for ( Habitat h : habitats ) {
+						System.out.println( h + "\n" );
+					}
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+		}catch (ClassNotFoundException | SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return conexion;
+	}
+	
+	public static Connection visualizarAnimales() {
+		try {
+			Class.forName("org.sqlite.JDBC");
+			conexion = DriverManager.getConnection("jdbc:sqlite:Zooyarzabal.db");
+			
+			try {
+				Statement statement = conexion.createStatement();
+				ArrayList<Animal> animales = new ArrayList<>();
+				String sent = "SELECT * FROM Animales";
+				ResultSet rs = statement.executeQuery( sent );
+				while (rs.next()) {
+					String id_animal = rs.getString( "id_animal" );
+					String nombre = rs.getString( "nombre" );
+					String especie = rs.getString( "especie" );
+					String habitat = rs.getString( "habitat" );
+					
+					String fechaString = rs.getString( "fecha_nacimiento" );
+					SimpleDateFormat formatoFecha = new SimpleDateFormat( "yyyy-MM-dd" );
+					java.util.Date fechaNacimiento = formatoFecha.parse(fechaString);
+					java.sql.Date fechaSQL = new java.sql.Date(fechaNacimiento.getTime());
+					
+					Animal animal = new Animal();
+					animal.setId_animal(id_animal);
+					animal.setNombre(nombre);
+					animal.setEspecie(especie);
+					animal.setFecha_nacimiento(fechaSQL);
+					animal.setHabitat(habitat);
+					
+					animales.add(animal);
+					
+					for ( Animal a : animales ) {
+						System.out.println( a + "\n" );
+					}
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+		}catch ( ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return conexion;
+		
+	}
+	
+	public static Connection visualizarVisitantes() {
+		try {
+			Class.forName("org.sqlite.JDBC");
+			conexion = DriverManager.getConnection("jdbc:sqlite:Zooyarzabal.db");
+			
+			try {
+				Statement statement = conexion.createStatement();
+				ArrayList<Visitante> visitantes = new ArrayList<>();
+				String sent = "SELECT * FROM Visitantes";
+				ResultSet rs = statement.executeQuery( sent );
+				while (rs.next()) {
+					String id_visitante = rs.getString( "id_visitante" );
+					String nombre = rs.getString( "nombre" );
+					int edad = rs.getInt( "edad" );
+					String fechaString = rs.getString( "fecha_visita" );
+					SimpleDateFormat formatoFecha = new SimpleDateFormat( "yyyy-MM-dd" );
+					java.util.Date fechaVisita = formatoFecha.parse(fechaString);
+					java.sql.Date fechaSQL = new java.sql.Date(fechaVisita.getTime());
+					
+					Visitante visitante = new Visitante();
+					visitante.setId_visitante(id_visitante);
+					visitante.setNombre(nombre);
+					visitante.setEdad(edad);
+					visitante.setFecha_visita(fechaSQL);
+					visitantes.add(visitante);
+					
+					for ( Visitante a : visitantes ) {
+						System.out.println( a + "\n" );
+					}
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+		}catch ( ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return conexion;
+		
+	}
+	
+	public static Connection visualizarExhibiciones() {
+		try {
+			Class.forName("org.sqlite.JDBC");
+			conexion = DriverManager.getConnection("jdbc:sqlite:Zooyarzabal.db");
+			
+			try {
+				Statement statement = conexion.createStatement();
+				ArrayList<Exhibicion> exhibiciones = new ArrayList<>();
+				String sent = "SELECT * FROM Exhibiciones";
+				ResultSet rs = statement.executeQuery( sent );
+				while (rs.next()) {
+					String id_exhibicion = rs.getString( "id_exhibicion" );
+					String nombre = rs.getString( "nombre" );
+					String descripcion = rs.getString( "descripcion" );
+					String id_animal = rs.getString( "id_animal" );
+					
+					Exhibicion exhibicion = new Exhibicion();
+					exhibicion.setId_exhibicion(id_exhibicion);
+					exhibicion.setNombre(nombre);
+					exhibicion.setDescripcion(descripcion);
+					exhibicion.setId_animal(id_animal);
+					
+					exhibiciones.add(exhibicion);
+					
+					for ( Exhibicion a : exhibiciones ) {
+						System.out.println( a + "\n" );
+					}
+				}
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+		}catch ( ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+			// TODO: handle exception
+		}
+		return conexion;
+		
+	}
+	
 
 }

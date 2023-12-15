@@ -1,5 +1,5 @@
 package Zoo;
 
-public class Pez extends Animal {
+public class Pez extends AnimalAntiguo {
 
 }

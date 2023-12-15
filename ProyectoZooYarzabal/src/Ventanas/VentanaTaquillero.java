@@ -7,8 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import Zoo.Visitante;
-import Zoo.Visitante;
+import Zoo.VisitanteAntiguo;
+import Zoo.VisitanteAntiguo;
 import Zoo.ZOO;
 
 public class VentanaTaquillero extends JFrame {
@@ -23,7 +23,7 @@ public class VentanaTaquillero extends JFrame {
 	// Método obtener precio de la entrada del visitante
 	public int precioEntrada() {
 		int precio = (int) 19.99;
-		Visitante v = new Visitante();
+		VisitanteAntiguo v = new VisitanteAntiguo();
 		int precioFinal = precio - v.obtenerDscuento()*precio;
 		return precioFinal;
 		

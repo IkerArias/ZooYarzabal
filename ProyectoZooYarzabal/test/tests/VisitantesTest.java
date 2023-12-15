@@ -8,13 +8,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import Ventanas.VentanaPrincipal;
-import Zoo.Visitante;
+import Zoo.VisitanteAntiguo;
 import Zoo.ZOO;
 
 class VisitantesTest {
 
 	private ZOO main;
-	private ArrayList<Visitante> visitantes = new ArrayList<>();
+	private ArrayList<VisitanteAntiguo> visitantes = new ArrayList<>();
 	
 	@BeforeEach
 	public void setUp() {
@@ -31,7 +31,7 @@ class VisitantesTest {
 	@Test
 	// Aquí veremos si la persona Juan Pérez con DNI 123456789 acudió al zoo este día o no
 	public void testVisitante1() {
-		Visitante visitante1 = visitantes.get(0);
+		VisitanteAntiguo visitante1 = visitantes.get(0);
 		assertEquals( "Juan Perez", visitante1.getNombre() );
 		assertEquals( "123456789", visitante1.getDNI() );
 	}
@@ -39,7 +39,7 @@ class VisitantesTest {
 	@Test 
 	// En este apartado añadiremos un nuevo visitante y veremos si luego éste está incluido en la lista de visitantes
 	public void nuevoVisitante() {
-		Visitante visitante = new Visitante("Antoine Griezmann", "73238011T", 32, 0, "antxon@gmail.com", "agote" );
+		VisitanteAntiguo visitante = new VisitanteAntiguo("Antoine Griezmann", "73238011T", 32, 0, "antxon@gmail.com", "agote" );
 		visitantes.add(visitante);
 		assertTrue(visitantes.contains(visitante));
 	}
@@ -47,7 +47,7 @@ class VisitantesTest {
 	@Test
 	// Eliminaremos un visitante
 	public void eliminarVisitante() {
-		Visitante visitante = visitantes.get(3);
+		VisitanteAntiguo visitante = visitantes.get(3);
 		visitantes.remove(visitante);
 		assertFalse(visitantes.contains(visitante));
 	}
@@ -55,7 +55,7 @@ class VisitantesTest {
 	@Test
 	// Aquí veremos si alguno de los visitantes de hoy se encuentra en edad avanzada
 	public void hayPersonaMayor() {
-		for (Visitante visitante : visitantes) {
+		for (VisitanteAntiguo visitante : visitantes) {
 			int edad = visitante.getEdad();
 			assertFalse( edad > 65 );
 		}

@@ -11,15 +11,15 @@ public class AsignacionVet_Ani implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	// Atributos
-	protected Animal animal;
+	protected AnimalAntiguo animal;
 	protected Trabajador trabajador;
 	protected Date fecha;
 	
 	// Getters y Setters
-	public Animal getAnimal() {
+	public AnimalAntiguo getAnimal() {
 		return animal;
 	}
-	public void setAnimal(Animal animal) {
+	public void setAnimal(AnimalAntiguo animal) {
 		this.animal = animal;
 	}
 	public Trabajador getTrabajador() {
@@ -36,7 +36,7 @@ public class AsignacionVet_Ani implements Serializable {
 	}
 	
 	// Constructores
-	public AsignacionVet_Ani(Animal animal, Trabajador trabajador, Date fecha) {
+	public AsignacionVet_Ani(AnimalAntiguo animal, Trabajador trabajador, Date fecha) {
 		super();
 		this.animal = animal;
 		this.trabajador = trabajador;
@@ -44,7 +44,7 @@ public class AsignacionVet_Ani implements Serializable {
 	}
 	public AsignacionVet_Ani() {
 		super();
-		this.animal = new Animal();
+		this.animal = new AnimalAntiguo();
 		this.trabajador = new Trabajador();
 		this.fecha = new Date();
 	}

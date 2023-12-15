@@ -8,22 +8,22 @@ import java.util.List;
 import java.util.Scanner;
 
 import Zoo.Trabajador;
-import Zoo.Visitante;
-import Zoo.Visitante;
+import Zoo.VisitanteAntiguo;
+import Zoo.VisitanteAntiguo;
 
 public class Zoo {
-	private static List<Visitante> visitantes = new ArrayList<>();
+	private static List<VisitanteAntiguo> visitantes = new ArrayList<>();
 	private static List<Trabajador> trabajadores = new ArrayList<>();
 	
-	public static void aniadirVisitante(Visitante v) {
+	public static void aniadirVisitante(VisitanteAntiguo v) {
 		if(buscarVisitante(v.getDNI())==null)
 			visitantes.add(v);
 	}
 	
-	public static Visitante buscarVisitante(String dni) {
+	public static VisitanteAntiguo buscarVisitante(String dni) {
 		boolean enc = false;
 		int pos = 0;
-		Visitante v = null;
+		VisitanteAntiguo v = null;
 		while(!enc && pos<visitantes.size()) {
 			v = visitantes.get(pos);
 			if(v.getDNI().equals(dni)) {
@@ -74,7 +74,7 @@ public class Zoo {
 				String dni = partes[0];
 				String nom = partes[1];
 				String con = partes[2];
-				Visitante c = new Visitante(dni, nom, con);
+				VisitanteAntiguo c = new VisitanteAntiguo(dni, nom, con);
 				if(buscarVisitante(dni) == null)
 					visitantes.add(c);
 			}
@@ -87,7 +87,7 @@ public class Zoo {
 	public static void guardarListaVisitantesEnFichero(String nomfich) {
 		try {
 			PrintWriter pw = new PrintWriter(nomfich);
-			for(Visitante c: visitantes) {
+			for(VisitanteAntiguo c: visitantes) {
 				pw.println(c.getDNI()+";"+c.getNombre()+";"+c.getContrasenia());
 			}
 			pw.flush();

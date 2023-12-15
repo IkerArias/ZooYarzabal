@@ -55,7 +55,6 @@ public class ConexionABaseDeDatos {
 						+ "(92, 'Sabana', 'Árido'),\r\n"
 						+ "(91, 'Océano', 'Acuático'),\r\n"
 						+ "(90, 'Montaña', 'Frío');";
-				System.out.println( "Habitats creados" );
 				Statement statement = conexion.createStatement();
 				statement.execute( sent );
 				
@@ -73,7 +72,6 @@ public class ConexionABaseDeDatos {
 						+ "(9, 'Mono', 'Cercopithecidae', '2017-06-25', 'Macho', 'Jungla'),\r\n"
 						+ "(10, 'Lince Ibérico', 'Lynx pardinus', '2019-03-08', 'Hembra', 'Bosque');\r\n"
 						+ "";
-				System.out.println( "Animales insertados" );
 				statement.executeUpdate( sent );
 				
 				sent = "INSERT INTO Empleados (id_empleado, nombre, puesto, salario, fecha_contratacion) VALUES\r\n"
@@ -88,7 +86,6 @@ public class ConexionABaseDeDatos {
 						+ "(9, 'Javier González', 'Entrenador', 40000.00, '2016-06-08'),\r\n"
 						+ "(10, 'Sofía Herrera', 'Contador', 48000.00, '2020-01-25');\r\n"
 						+ "";
-				System.out.println( "Empleado registrados" );
 				statement.executeUpdate( sent );
 				
 				sent = "INSERT INTO Visitantes (id_visitante, nombre, edad, fecha_visita) VALUES\r\n"
@@ -103,7 +100,6 @@ public class ConexionABaseDeDatos {
 						+ "(9, 'Elena Ramírez', 55, '2023-09-25'),\r\n"
 						+ "(10, 'Javier González', 38, '2023-10-30');\r\n"
 						+ "";
-				System.out.println( "Visitantes registrados" );
 				statement.executeUpdate( sent );
 				
 				sent = "INSERT INTO Exhibiciones (id_exhibicion, nombre, descripcion, id_animal) VALUES\r\n"
@@ -118,7 +114,6 @@ public class ConexionABaseDeDatos {
 						+ "(9, 'Selva de Monos', 'Observa a los monos jugando y interactuando.', 9),\r\n"
 						+ "(10, 'Rincon del Lince', 'Conoce al lince ibérico en su hábitat natural.', 10);\r\n"
 						+ "";
-				System.out.println( "Exhibiciones organizadas" );
 				statement.executeUpdate( sent );
 				
 				System.out.println( "Datos introducidos correctamente" );
