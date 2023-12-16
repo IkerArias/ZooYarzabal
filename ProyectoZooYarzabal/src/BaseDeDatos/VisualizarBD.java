@@ -22,14 +22,14 @@ public class VisualizarBD {
 	
 	private static Connection conexion;
 	
-	public static Connection visualizarEmpleados() {
+	public static ArrayList<Empleado> visualizarEmpleados() {
+		ArrayList<Empleado> empleados = new ArrayList<>();
 		try {
 			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:Zooyarzabal.db");
+			conexion = DriverManager.getConnection("jdbc:sqlite:ZOOYARZABALBD.db");
 			
 			try {
 				Statement statement = conexion.createStatement();
-				ArrayList<Empleado> empleados = new ArrayList<>();
 				String sent = "SELECT * FROM Empleados";
 				ResultSet rs = statement.executeQuery( sent );
 				while ( rs.next() ) {
@@ -75,17 +75,17 @@ public class VisualizarBD {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return conexion;
+		return empleados;
 	}
 	
-	public static Connection visualizarHabitats() {
+	public static ArrayList<Habitat> visualizarHabitats() {
+		ArrayList<Habitat> habitats = new ArrayList<>();
 		try {
 			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:Zooyarzabal.db");
+			conexion = DriverManager.getConnection("jdbc:sqlite:ZOOYARZABALBD.db");
 			
 			try {
 				Statement statement = conexion.createStatement();
-				ArrayList<Habitat> habitats = new ArrayList<>();
 				String sent = "SELECT * FROM Habitats";
 				ResultSet rs = statement.executeQuery( sent );
 				while ( rs.next() ) {
@@ -110,17 +110,17 @@ public class VisualizarBD {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
-		return conexion;
+		return habitats;
 	}
 	
-	public static Connection visualizarAnimales() {
+	public static ArrayList<Animal> visualizarAnimales() {
+		ArrayList<Animal> animales = new ArrayList<>();
 		try {
 			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:Zooyarzabal.db");
+			conexion = DriverManager.getConnection("jdbc:sqlite:ZOOYARZABALBD.db");
 			
 			try {
 				Statement statement = conexion.createStatement();
-				ArrayList<Animal> animales = new ArrayList<>();
 				String sent = "SELECT * FROM Animales";
 				ResultSet rs = statement.executeQuery( sent );
 				while (rs.next()) {
@@ -154,18 +154,18 @@ public class VisualizarBD {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
-		return conexion;
+		return animales;
 		
 	}
 	
-	public static Connection visualizarVisitantes() {
+	public static ArrayList<Visitante> visualizarVisitantes() {
+		ArrayList<Visitante> visitantes = new ArrayList<>();
 		try {
 			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:Zooyarzabal.db");
+			conexion = DriverManager.getConnection("jdbc:sqlite:ZOOYARZABALBD.db");
 			
 			try {
 				Statement statement = conexion.createStatement();
-				ArrayList<Visitante> visitantes = new ArrayList<>();
 				String sent = "SELECT * FROM Visitantes";
 				ResultSet rs = statement.executeQuery( sent );
 				while (rs.next()) {
@@ -195,18 +195,18 @@ public class VisualizarBD {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
-		return conexion;
+		return visitantes;
 		
 	}
 	
-	public static Connection visualizarExhibiciones() {
+	public static ArrayList<Exhibicion> visualizarExhibiciones() {
+		ArrayList<Exhibicion> exhibiciones = new ArrayList<>();
 		try {
 			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:Zooyarzabal.db");
+			conexion = DriverManager.getConnection("jdbc:sqlite:ZOOYARZABALBD.db");
 			
 			try {
 				Statement statement = conexion.createStatement();
-				ArrayList<Exhibicion> exhibiciones = new ArrayList<>();
 				String sent = "SELECT * FROM Exhibiciones";
 				ResultSet rs = statement.executeQuery( sent );
 				while (rs.next()) {
@@ -234,7 +234,7 @@ public class VisualizarBD {
 			e.printStackTrace();
 			// TODO: handle exception
 		}
-		return conexion;
+		return exhibiciones;
 		
 	}
 	

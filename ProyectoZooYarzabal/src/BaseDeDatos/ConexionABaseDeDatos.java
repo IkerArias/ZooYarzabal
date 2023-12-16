@@ -18,7 +18,7 @@ public class ConexionABaseDeDatos {
 	public static Connection abrirConexion() {
 		try {
 			Class.forName("org.sqlite.JDBC");
-			conexion = DriverManager.getConnection("jdbc:sqlite:Zooyarzabal.db");
+			conexion = DriverManager.getConnection("jdbc:sqlite:ZOOYARZABALBD.db");
 			System.out.println( "Conectado a la base de datos!" );
 			
 			try {
@@ -61,18 +61,35 @@ public class ConexionABaseDeDatos {
 				// CURIOSAMENTE FUNCIONA HASTA AQUÍ LUEGO SALTA EL ERROR DE SQLITE_BUSY
 				
 				sent = "INSERT INTO Animales (id_animal, nombre, especie, fecha_nacimiento, genero, habitat) VALUES\r\n"
-						+ "(1, 'León', 'Panthera leo', '2010-05-15', 'Macho', 'Savannah'),\r\n"
-						+ "(2, 'Tigre', 'Panthera tigris', '2012-02-28', 'Hembra', 'Selva'),\r\n"
-						+ "(3, 'Delfín', 'Delphinidae', '2015-08-10', 'Macho', 'Acuario'),\r\n"
-						+ "(4, 'Oso Polar', 'Ursus maritimus', '2013-12-20', 'Hembra', 'Polar'),\r\n"
-						+ "(5, 'Elefante', 'Loxodonta africana', '2008-07-03', 'Macho', 'Sabana'),\r\n"
-						+ "(6, 'Pingüino', 'Spheniscidae', '2016-04-05', 'Hembra', 'Polar'),\r\n"
-						+ "(7, 'Jirafa', 'Giraffa camelopardalis', '2011-11-12', 'Macho', 'Savannah'),\r\n"
-						+ "(8, 'Tortuga Marina', 'Cheloniidae', '2014-09-18', 'Hembra', 'Océano'),\r\n"
-						+ "(9, 'Mono', 'Cercopithecidae', '2017-06-25', 'Macho', 'Jungla'),\r\n"
-						+ "(10, 'Lince Ibérico', 'Lynx pardinus', '2019-03-08', 'Hembra', 'Bosque');\r\n"
-						+ "";
-				statement.executeUpdate( sent );
+				        + "(1, 'León', 'Panthera leo', '2010-05-15', 'Macho', 'Savannah'),\r\n"
+				        + "(2, 'Tigre', 'Panthera tigris', '2012-02-28', 'Hembra', 'Selva'),\r\n"
+				        + "(3, 'Delfín', 'Delphinidae', '2015-08-10', 'Macho', 'Acuario'),\r\n"
+				        + "(4, 'Oso Polar', 'Ursus maritimus', '2013-12-20', 'Hembra', 'Polar'),\r\n"
+				        + "(5, 'Elefante', 'Loxodonta africana', '2008-07-03', 'Macho', 'Sabana'),\r\n"
+				        + "(6, 'Pingüino', 'Spheniscidae', '2016-04-05', 'Hembra', 'Polar'),\r\n"
+				        + "(7, 'Jirafa', 'Giraffa camelopardalis', '2011-11-12', 'Macho', 'Savannah'),\r\n"
+				        + "(8, 'Tortuga Marina', 'Cheloniidae', '2014-09-18', 'Hembra', 'Océano'),\r\n"
+				        + "(9, 'Mono', 'Cercopithecidae', '2017-06-25', 'Macho', 'Jungla'),\r\n"
+				        + "(10, 'Lince Ibérico', 'Lynx pardinus', '2019-03-08', 'Hembra', 'Bosque'),\r\n"
+				        + "(11, 'Leopardo', 'Panthera pardus', '2014-09-05', 'Macho', 'Selva'),\r\n"
+				        + "(12, 'Halcón', 'Falco peregrinus', '2016-12-08', 'Hembra', 'Montañas'),\r\n"
+				        + "(13, 'Canguro', 'Macropus', '2018-02-20', 'Macho', 'Desierto'),\r\n"
+				        + "(14, 'Oso Panda', 'Ailuropoda melanoleuca', '2010-06-15', 'Hembra', 'Bosque'),\r\n"
+				        + "(15, 'Hipopótamo', 'Hippopotamus amphibius', '2012-11-30', 'Macho', 'Río'),\r\n"
+				        + "(16, 'Puma', 'Puma concolor', '2017-07-18', 'Hembra', 'Montañas'),\r\n"
+				        + "(17, 'Cocodrilo', 'Crocodylidae', '2013-04-25', 'Macho', 'Pantano'),\r\n"
+				        + "(18, 'Águila', 'Aquila chrysaetos', '2015-10-10', 'Hembra', 'Cielo'),\r\n"
+				        + "(19, 'Gorila', 'Gorilla', '2016-05-22', 'Macho', 'Selva'),\r\n"
+				        + "(20, 'Tiburón', 'Carcharhinidae', '2011-08-03', 'Hembra', 'Océano'),\r\n"
+				        + "(21, 'Cebra', 'Equus zebra', '2014-06-12', 'Macho', 'Savannah'),\r\n"
+				        + "(22, 'Jaguar', 'Panthera onca', '2015-09-30', 'Hembra', 'Selva'),\r\n"
+				        + "(23, 'Panda Rojo', 'Ailurus fulgens', '2017-04-15', 'Macho', 'Bosque'),\r\n"
+				        + "(24, 'Camello', 'Camelus', '2019-01-22', 'Hembra', 'Desierto'),\r\n"
+				        + "(25, 'Lechuza', 'Tyto alba', '2013-08-08', 'Macho', 'Bosque'),\r\n"
+				        + "(26, 'Pantera', 'Panthera onca', '2014-06-07', 'Hembra', 'Selva');\r\n";
+
+				statement.executeUpdate(sent);
+
 				
 				sent = "INSERT INTO Empleados (id_empleado, nombre, puesto, salario, fecha_contratacion) VALUES\r\n"
 						+ "(1, 'Juan Pérez', 'Guardián', 30000.00, '2010-03-15'),\r\n"

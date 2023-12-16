@@ -70,6 +70,7 @@ public class Zoo {
 			String linea;
 			while(sc.hasNext()) {
 				linea = sc.nextLine();
+				System.out.println( "Línea: " + linea );
 				String [] partes = linea.split(";");
 				String dni = partes[0];
 				String nom = partes[1];
@@ -105,11 +106,12 @@ public class Zoo {
 			String linea;
 			while(sc.hasNext()) {
 				linea = sc.nextLine();
+				System.out.println( "Línea: " + linea );
 				String [] partes = linea.split(";");
-				String dni = partes[1];
+				String dni = partes[0];
 				String nom = partes[1];
 				String con = partes[2];
-				Trabajador t = new Trabajador(dni, nomfich, nom, con);
+				Trabajador t = new Trabajador(dni,nom, con);
 				if(buscarTrabajador(dni) == null)
 					trabajadores.add(t);
 			}
