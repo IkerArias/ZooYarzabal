@@ -1,6 +1,7 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -17,6 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import Zoo.ImagePanel;
 import Zoo.Trabajador;
 import Zoo.ZOO;
 
@@ -25,7 +27,7 @@ public class VentanaTrabajador extends JFrame{
 	private JButton btnVolver, btnInicio, btnRegistro;
 	private JTextField txtDniR, txtnomR, txtDniIS;
 	private JPasswordField txtconR, txtconIS;
-	private JPanel pNorte, pSur, pCentro, pCentrodch, pCentroizq;
+	private JPanel pNorte, pCentro, pCentrodch, pCentroizq;
 	private JFrame vActual, vAnterior;
 	private JComboBox<String> txtPuestoR;
 	
@@ -35,6 +37,8 @@ public class VentanaTrabajador extends JFrame{
 		vAnterior = va;
 		setBounds(500, 300, 700, 250);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		setResizable(false);
+		setBackground(Color.DARK_GRAY);
 		
 		lblTitulo = new JLabel("INICIO DE SESIÓN TRABAJADOR");
 		pNorte = new JPanel();
@@ -79,15 +83,21 @@ public class VentanaTrabajador extends JFrame{
         
         //Boton Registro
         btnRegistro = new JButton("REGISTRARSE");
+        btnRegistro.setBackground(Color.DARK_GRAY);
+        btnRegistro.setForeground(Color.YELLOW);
         pCentro.add(btnRegistro);
         
         //Boton Inicio sesion
         btnInicio = new JButton("INICIAR SESIÓN");
+        btnInicio.setBackground(Color.DARK_GRAY);
+        btnInicio.setForeground(Color.YELLOW);
         pCentro.add(btnInicio);
         
         //Boton volver
         btnVolver = new JButton("VOLVER");
-        pSur = new JPanel();
+        btnVolver.setBackground(Color.DARK_GRAY);
+        btnVolver.setForeground(Color.YELLOW);
+        ImagePanel pSur = new ImagePanel("C:/ProgIII/a.jpg/");
         getContentPane().add(pSur, BorderLayout.SOUTH);
         pSur.add(btnVolver);
         

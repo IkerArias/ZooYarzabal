@@ -5,29 +5,12 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.geom.AffineTransform;
+import java.awt.*;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.SwingUtilities;
+import javax.swing.*;
 
 import Zoo.BordeadoTexto;
 import Zoo.ImagePanel;
-import uk.co.caprica.vlcj.discovery.NativeDiscovery;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 public class VentanaVisitante extends JFrame{
@@ -56,7 +39,7 @@ public class VentanaVisitante extends JFrame{
 		ImagePanel pnlTitulo = new ImagePanel("C:/ProgIII/a.jpg/");
 		pnlTitulo.setLayout(new FlowLayout(FlowLayout.CENTER));
         BordeadoTexto lblTitulo = new BordeadoTexto( "BIENVENIDO AL ZOO" );
-        Font fuente = new Font(lblTitulo.getFont().getName(), Font.BOLD, 24);
+        Font fuente = new Font(lblTitulo.getFont().getName(), Font.BOLD, 30);
         lblTitulo.setFont(fuente);
         lblTitulo.setForeground(Color.YELLOW);
         pnlTitulo.add(lblTitulo);
@@ -83,6 +66,16 @@ public class VentanaVisitante extends JFrame{
 		
         JPanel pnlTexto = new JPanel(new GridBagLayout());
         
+//        BordeadoTexto labelTexto = new BordeadoTexto("¡Bienvenidos al Zoológico Zooyarzabal!\n\n" +
+//                "Estamos emocionados de presentarles nuestro zoológico, donde podrán experimentar " +
+//                "la diversidad y belleza de la vida animal. Algunas de las atracciones destacadas incluyen:\n\n" +
+//                "- **Safari Africano**: Observa a majestuosos leones, elefantes, jirafas y rinocerontes en su hábitat natural.\n" +
+//                "- **Acuario Marino**: Sumérgete en las profundidades del océano y descubre una variedad de peces tropicales, tiburones y corales vibrantes.\n" +
+//                "- **Selva Amazónica**: Explora la rica biodiversidad de la selva amazónica, desde coloridos loros hasta intrigantes jaguares y perezosos.\n" +
+//                "- **Habitat Polar**: Experimenta el frío ártico mientras observas a osos polares, pingüinos y otras criaturas adaptadas a las condiciones extremas.\n\n" +
+//                "Además de nuestras atracciones principales, ofrecemos espectáculos diarios, charlas educativas y actividades interactivas para toda la familia. " +
+//                "Esperamos que disfruten de esta aventura única y se lleven recuerdos inolvidables de su visita a Zooyarzabal.");
+//        
         // Agregaremos algunas condiciones para que luego el JTextArea se vea mejor
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0; 
@@ -124,7 +117,7 @@ public class VentanaVisitante extends JFrame{
         
         JScrollPane jScrollPane = new JScrollPane(imagePanel);  // Aquí añadimos el JTextArea a un JScrollPane
         pnlTexto.add(jScrollPane, gbc);  // Añade el JScrollPane al pnlTexto
-
+//        pnlTexto.add(labelTexto);
         add(pnlTexto, BorderLayout.CENTER);
         
         

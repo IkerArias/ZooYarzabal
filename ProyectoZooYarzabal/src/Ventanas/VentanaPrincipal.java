@@ -27,7 +27,7 @@ public class VentanaPrincipal {
 		// Crear una ventana principal
         ventana = new JFrame("Ventana Principal");
         ventana.setBackground(Color.DARK_GRAY);
-		ventana.setBounds(500, 150, 600, 700);
+		ventana.setBounds(500, 50, 600, 700);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         ImagePanel pnlTitulo = new ImagePanel("C:/ProgIII/a.jpg/");
