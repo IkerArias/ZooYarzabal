@@ -77,8 +77,9 @@ public class VentanaAnimales extends JFrame{
 						animalAleatorio.getId_animal(),
 						animalAleatorio.getNombre(),
 						animalAleatorio.getEspecie(),
-						animalAleatorio.getFecha_nacimiento(),
-						animalAleatorio.getHabitat()
+						animalAleatorio.getHabitat(),
+						animalAleatorio.getFecha_nacimiento()
+
 				});
 				animalesCopia.remove(indiceAleatorioAnimales); // Quitamos al animal anteriormente seleccionado para que no salga más de una vez
 
@@ -103,32 +104,47 @@ public class VentanaAnimales extends JFrame{
 		pSur.add(comboOpcionesAleatorias);
 		
 		// Ahora a configurar el comboBox:
-		comboOpcionesAleatorias.addActionListener( new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				JComboBox<String> combo = (JComboBox<String>) e.getSource();
-				String aukerautakua = (String) combo.getSelectedItem();
-				TableRowSorter<TableModel> sorter = new TableRowSorter<>(modeloTabla);
-				tabla.setRowSorter(sorter);
-				
-				// para comparar según el criterio:
-				if ( aukerautakua.equals( "ID animal" )) {
-					sorter.setComparator(0, Comparator.naturalOrder());
-				} else if ( aukerautakua.equals( "Nombre" )) {
-					sorter.setComparator(1, Comparator.naturalOrder());
-				} else if ( aukerautakua.equals( "Especie" )) {
-					sorter.setComparator(2, Comparator.naturalOrder());
-				} else if ( aukerautakua.equals( "Habitat" )) {
-					sorter.setComparator(3, Comparator.naturalOrder());
-				} else if ( aukerautakua.equals( "Fecha Nacimiento" )) {
-					sorter.setComparator(4, Comparator.naturalOrder());
-				}
-				
-				sorter.sort();
-			}
+		comboOpcionesAleatorias.addActionListener(new ActionListener() {
+
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		        JComboBox<String> combo = (JComboBox<String>) e.getSource();
+		        String criterio = (String) combo.getSelectedItem();
+		        TableRowSorter<TableModel> sorter = new TableRowSorter<>(modeloTabla);
+		        tabla.setRowSorter(sorter);
+
+		        // para comparar según el criterio:
+		        switch (criterio) {
+		            case "ID animal":
+		                sorter.setComparator(0, Comparator.naturalOrder());
+		                break;
+		            case "Nombre":
+		                sorter.setComparator(1, Comparator.naturalOrder());
+		                break;
+		            case "Especie":
+		                sorter.setComparator(2, Comparator.naturalOrder());
+		                break;
+		            case "Habitat":
+		                sorter.setComparator(3, Comparator.naturalOrder());
+		                break;
+		            case "Fecha Nacimiento":
+		                sorter.setComparator(4, new Comparator<String>() {
+		                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+		                    @Override
+		                    public int compare(String fecha1, String fecha2) {
+		                        LocalDate date1 = LocalDate.parse(fecha1, formatter);
+		                        LocalDate date2 = LocalDate.parse(fecha2, formatter);
+		                        return date1.compareTo(date2);
+		                    }
+		                });
+		                break;
+		        }
+
+		        sorter.sort();
+		    }
 		});
+
 		
 		btnVolver = new JButton("VOLVER");
 		getContentPane().add(pSur, BorderLayout.SOUTH);

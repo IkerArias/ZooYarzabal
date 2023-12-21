@@ -2,7 +2,9 @@ package Ventanas;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.*;
@@ -19,36 +21,38 @@ public class VentanaPrincipal {
 	private JFrame ventana;
 	
 	public VentanaPrincipal() {
-		
+        
 		// Crear una ventana principal
         ventana = new JFrame("Ventana Principal");
-        ventana.setBounds(500, 300, 700, 250);
-        
-		// Crear una ventana principall
-        ventana = new JFrame("Ventana Principal");
-        ventana.setSize(800, 600);
-		ventana.setBounds(500, 200, 800, 600);
+        ventana.setBackground(Color.DARK_GRAY);
+		ventana.setBounds(500, 150, 600, 700);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        JLabel lblTitulo = new JLabel("ZOOYARZABAL");
+        ImagePanel pnlTitulo = new ImagePanel("C:/ProgIII/a.jpg/");
+        pnlTitulo.setLayout(new FlowLayout());
+        BordeadoTexto lblTitulo = new BordeadoTexto( "ZOOYARZABAL" );
+        Font fuente = new Font(lblTitulo.getFont().getName(), Font.BOLD, 24);
+        lblTitulo.setFont(fuente);
+        lblTitulo.setForeground(Color.YELLOW);
+        pnlTitulo.add(lblTitulo);
+        pnlTitulo.setPreferredSize(new Dimension(pnlTitulo.getPreferredSize().width, 40));
+        ventana.add(pnlTitulo, BorderLayout.NORTH);
         //Panel para los botones
-        JPanel pnlBotones = new JPanel();
+        ImagePanel pnlBotones = new ImagePanel("C:/ProgIII/a.jpg/");
         // Panel imagen
         JPanel pnlImagen = new JPanel();
-        pnlImagen.setBackground(Color.black);
-        JPanel pnlNorte = new JPanel();
+        pnlImagen.setBackground(Color.DARK_GRAY);
         
-        pnlNorte.add(lblTitulo);
-        ventana.add(pnlNorte, BorderLayout.NORTH);
+       
         
         /*
          * Apartado donde colocaremos la imagen del zoo, por ahora una provisonal en el centro
          * de la ventana que se abrirá al ejecutar el programa
          */
         
-        ImageIcon icono = new ImageIcon("C:/Users/unaio/OneDrive/Imágenes/1197626.jpg"); // Después cambiaremos la ruta de acceso de la imagen cuando demos con la imagen final deseada
+        ImageIcon icono = new ImageIcon("C:/Users/unaio/Downloads/cb759431-2a8d-4f81-bee2-bf67662f9579.jpg/"); // Después cambiaremos la ruta de acceso de la imagen cuando demos con la imagen final deseada
         Image imagen = icono.getImage();
-        Image nuevaImagen = imagen.getScaledInstance(800, 600, Image.SCALE_SMOOTH);
+        Image nuevaImagen = imagen.getScaledInstance(ventana.getWidth(), ventana.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon nuevoIcono = new ImageIcon(nuevaImagen);
         JLabel labelImagen = new JLabel(nuevoIcono);
         pnlImagen.add(labelImagen);
@@ -56,6 +60,8 @@ public class VentanaPrincipal {
         
         // Botones para seleccionar si eres trabajador o visitante
         JButton btnTrabajador = new JButton("Soy Trabajador");
+        btnTrabajador.setBackground(Color.DARK_GRAY);
+        btnTrabajador.setForeground(Color.YELLOW);
         // ActionListener para el botón de trabajador
         btnTrabajador.addActionListener(new ActionListener() {
             @Override
@@ -66,6 +72,8 @@ public class VentanaPrincipal {
         });
         
         JButton btnVisitante = new JButton("Soy Visitante");
+        btnVisitante.setBackground(Color.DARK_GRAY);
+        btnVisitante.setForeground(Color.YELLOW);
         // ActionListener para el botón de visitante
         btnVisitante.addActionListener(new ActionListener() {
             @Override
@@ -76,6 +84,8 @@ public class VentanaPrincipal {
         });
         
         JButton btnSalir = new JButton("Salir");
+        btnSalir.setBackground(Color.DARK_GRAY);
+        btnSalir.setForeground(Color.YELLOW);
         btnSalir.addActionListener((e)->{
         	System.exit(0);
         });
@@ -97,6 +107,7 @@ public class VentanaPrincipal {
 		});
         
         ventana.setVisible(true);
+        ventana.setResizable(false);
         
        
 		

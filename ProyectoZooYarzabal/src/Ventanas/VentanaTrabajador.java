@@ -91,7 +91,7 @@ public class VentanaTrabajador extends JFrame{
         getContentPane().add(pSur, BorderLayout.SOUTH);
         pSur.add(btnVolver);
         
-        Zoo.cargarFicheroTrabajadoresEnLista("Trabajadores.csv");
+        // Zoo.cargarFicheroTrabajadoresEnLista("Trabajadores.csv");
 		
         btnVolver.addActionListener((e)->{
         	vAnterior.setVisible(true);
