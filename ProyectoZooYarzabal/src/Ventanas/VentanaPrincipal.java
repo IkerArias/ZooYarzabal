@@ -16,6 +16,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import Zoo.BordeadoTexto;
+import Zoo.ImagePanel;
+
 public class VentanaPrincipal {
 	
 	private JFrame ventana;
@@ -95,16 +98,7 @@ public class VentanaPrincipal {
         // Agregar botones a la ventana principal
         ventana.add(pnlBotones, BorderLayout.SOUTH);
         
-        ventana.addKeyListener(new KeyAdapter() {
-			
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-				if ((e.getKeyCode()== KeyEvent.VK_C && e.isControlDown())) {
-					ventana.dispose();
-				}
-			}
-		});
+        
         
         ventana.setVisible(true);
         ventana.setResizable(false);

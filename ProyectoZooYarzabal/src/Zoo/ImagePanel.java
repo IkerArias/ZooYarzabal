@@ -1,4 +1,4 @@
-package Ventanas;
+package Zoo;
 
 import java.awt.Graphics;
 import java.awt.Image;
