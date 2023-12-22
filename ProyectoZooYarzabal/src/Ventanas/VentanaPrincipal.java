@@ -21,13 +21,15 @@ import Zoo.ImagePanel;
 public class VentanaPrincipal {
 	
 	private JFrame ventana;
+	private static VentanaPrincipal instancia;
 	
 	public VentanaPrincipal() {
-        
+        instancia = this;
 		// Crear una ventana principal
         ventana = new JFrame("Ventana Principal");
         ventana.setBackground(Color.DARK_GRAY);
 		ventana.setBounds(500, 50, 600, 700);
+		ventana.setLocationRelativeTo(null);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         ImagePanel pnlTitulo = new ImagePanel("C:/ProgIII/a.jpg/");
@@ -81,7 +83,16 @@ public class VentanaPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventana.dispose(); // Cerrar la ventana principal
-                new VentanaVisitante(ventana); // Abrir la ventana de visitantes
+                VentanaPrincipal.getInstancia().ventana.dispose();
+                SwingUtilities.invokeLater(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						new VentanaVisitante(ventana);
+					}
+				});
+                // new VentanaVisitante(ventana); // Abrir la ventana de visitantes
             }
         });
         
@@ -106,7 +117,11 @@ public class VentanaPrincipal {
 		
 	}
 	
-	 public static void main(String[] args) {
+	 public static VentanaPrincipal getInstancia() {
+		return instancia;
+	}
+
+	public static void main(String[] args) {
 	        SwingUtilities.invokeLater(new Runnable() {
 	            @Override
 	            public void run() {

@@ -1,30 +1,44 @@
 package Ventanas;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
 import Zoo.BordeadoTexto;
 import Zoo.ImagePanel;
+import uk.co.caprica.vlcj.factory.discovery.NativeDiscovery;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 public class VentanaVisitante extends JFrame{
-	private JFrame vActual, vAnterior;
+	private static JFrame vActual;
+	private JFrame vAnterior;
 	private JButton btnEventos, btnMapa, btnInfoAnimales, btnVolver;
 	private JPanel pnlNorte, pnlBotones, pnlSur;
 	private JLabel lblTitulo;
+	private EmbeddedMediaPlayerComponent component;
 	
 //	public static void main(String[] args) {
 //        SwingUtilities.invokeLater(() -> {
+//    		System.setProperty("jna.library.path", "C:/Program Files/VideoLAN/VLC");
 //            JFrame frame = new VentanaVisitante(null); // Para el JFrame anterior, pasa null
 //        });
 //    }
-//	
+	
+	public static void main(String[] args) {
+		System.out.println("a");
+		// boolean found = (new NativeDiscovery()).discover();
+		System.setProperty("jna.library.path", "C:/Program Files/VideoLAN/VLC");
+		miVentana = new VentanaVisitante(vActual);
+		System.out.println("b");
+		miVentana.lanzarVideo("C:\\Users\\unaio\\Downloads\\Go!azen 10_ _Zoriontasuna_.mp4");
+		System.out.println((new NativeDiscovery()).discoveredPath());
+
+	}
+	
+	private static VentanaVisitante miVentana;
+	
 	public VentanaVisitante(JFrame va) {
 		super();
 		setResizable(false);
@@ -32,6 +46,7 @@ public class VentanaVisitante extends JFrame{
 		vActual = this;
 		vAnterior = va;
 		setLayout(new BorderLayout());
+		setLocationRelativeTo(null);
 		setBounds(500, 150, 1000, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -52,30 +67,57 @@ public class VentanaVisitante extends JFrame{
          * los recursos para hacer uno nosotros mismos.
          */
         
-        JPanel pnlVideo = new JPanel();
-        getContentPane().add(pnlVideo);
-        EmbeddedMediaPlayerComponent component = new EmbeddedMediaPlayerComponent();
-        component.mediaPlayer().media().play("C:/Users/unaio/Downloads/Go!azen 10_ _Zoriontasuna_.mp4");
-    
-        pnlVideo.add(component, BorderLayout.CENTER);
-        add(pnlVideo);
+        JPanel panelPrincipal = new JPanel(new BorderLayout());
+        
+        JPanel panelVideoyBotones = new JPanel(new BorderLayout());
+        
+        
+        component = new EmbeddedMediaPlayerComponent();    
+        panelVideoyBotones.add(component, BorderLayout.CENTER);
+        panelPrincipal.add(panelVideoyBotones, BorderLayout.CENTER);
+        
+        JPanel panelBotonesVideo = new JPanel(new FlowLayout());
+        JButton botonPausa = new JButton( "Pausar" );
+        botonPausa.setBackground(Color.DARK_GRAY);
+        botonPausa.setForeground(Color.YELLOW);
+        panelBotonesVideo.add(botonPausa);
+        JButton botonReiniciar = new JButton( "Reiniciar" );
+        botonReiniciar.setBackground(Color.DARK_GRAY);
+        botonReiniciar.setForeground(Color.YELLOW);
+        panelBotonesVideo.add(botonReiniciar);
+        
+        botonPausa.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				if (component.mediaPlayer().status().isPlaying()) {
+					component.mediaPlayer().controls().pause();
+				}else {
+					component.mediaPlayer().controls().play();
+				}
+			}
+		});
+        
+        botonReiniciar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				component.mediaPlayer().controls().pause();
+				component.mediaPlayer().controls().setTime(0);
+				component.mediaPlayer().controls().play();
+			}
+		});
+        
+        panelVideoyBotones.add(panelBotonesVideo, BorderLayout.SOUTH);
+        
         
         /*
          * JTextArea con el texto de bienvenida
          */
 		
         JPanel pnlTexto = new JPanel(new GridBagLayout());
-        
-//        BordeadoTexto labelTexto = new BordeadoTexto("¡Bienvenidos al Zoológico Zooyarzabal!\n\n" +
-//                "Estamos emocionados de presentarles nuestro zoológico, donde podrán experimentar " +
-//                "la diversidad y belleza de la vida animal. Algunas de las atracciones destacadas incluyen:\n\n" +
-//                "- **Safari Africano**: Observa a majestuosos leones, elefantes, jirafas y rinocerontes en su hábitat natural.\n" +
-//                "- **Acuario Marino**: Sumérgete en las profundidades del océano y descubre una variedad de peces tropicales, tiburones y corales vibrantes.\n" +
-//                "- **Selva Amazónica**: Explora la rica biodiversidad de la selva amazónica, desde coloridos loros hasta intrigantes jaguares y perezosos.\n" +
-//                "- **Habitat Polar**: Experimenta el frío ártico mientras observas a osos polares, pingüinos y otras criaturas adaptadas a las condiciones extremas.\n\n" +
-//                "Además de nuestras atracciones principales, ofrecemos espectáculos diarios, charlas educativas y actividades interactivas para toda la familia. " +
-//                "Esperamos que disfruten de esta aventura única y se lleven recuerdos inolvidables de su visita a Zooyarzabal.");
-//        
         // Agregaremos algunas condiciones para que luego el JTextArea se vea mejor
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = 0; 
@@ -115,10 +157,8 @@ public class VentanaVisitante extends JFrame{
         imagePanel.add(areaTexto, BorderLayout.CENTER);
         
         
-        JScrollPane jScrollPane = new JScrollPane(imagePanel);  // Aquí añadimos el JTextArea a un JScrollPane
-        pnlTexto.add(jScrollPane, gbc);  // Añade el JScrollPane al pnlTexto
-//        pnlTexto.add(labelTexto);
-        add(pnlTexto, BorderLayout.CENTER);
+        panelPrincipal.add(imagePanel, BorderLayout.SOUTH);
+        add(panelPrincipal);
         
         
         ImagePanel pnlBotones = new ImagePanel("C:/ProgIII/a.jpg/");
@@ -163,10 +203,19 @@ public class VentanaVisitante extends JFrame{
 			vActual.dispose();
 	    });
 	
+//		JScrollPane jScrollPane = new JScrollPane(vActual);
+//		add(jScrollPane);
+		
 		setVisible(true);
+		
+		
 
 	
 }
+	private void lanzarVideo(String urlVideo) {
+		component.mediaPlayer().audio().setVolume(75); // para que no salga a tope el volúmen
+		component.mediaPlayer().media().play(urlVideo);
+	}
 }
 	
 	
