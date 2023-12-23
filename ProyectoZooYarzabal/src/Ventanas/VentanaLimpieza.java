@@ -10,13 +10,15 @@ import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 public class VentanaLimpieza extends JFrame {
     protected JFrame vActual, vAnterior;
-    protected JButton btnVolver, btnComenzar, btnFinalizar;
+    protected JButton btnVolver, btnComenzar, btnFinalizar, btnAnadir, btnAgregar;
     protected JPanel pSur;
     protected JList<String> listaTareas;
     protected DefaultListModel<String> listModel;
+    protected JTextField txtNuevaTarea;
 
     public VentanaLimpieza(JFrame va) {
         super();
@@ -40,11 +42,13 @@ public class VentanaLimpieza extends JFrame {
         // Botones y acciones
         btnComenzar = new JButton(new ComenzarTareaAction());
         btnFinalizar = new JButton(new FinalizarTareaAction());
+        btnAnadir = new JButton(new AgregarTareaAction());
         btnVolver = new JButton("VOLVER");
         btnVolver.addActionListener((e) -> {
             vAnterior.setVisible(true);
             vActual.dispose();
         });
+        
 
         // Panel con botones
         pSur = new JPanel();
@@ -52,10 +56,31 @@ public class VentanaLimpieza extends JFrame {
         pSur.add(btnComenzar);
         pSur.add(btnFinalizar);
         pSur.add(btnVolver);
+        
+        JPanel pNorte = new JPanel();
+        getContentPane().add(pNorte, BorderLayout.NORTH);
+        pNorte.add(txtNuevaTarea);
+        pNorte.add(btnAgregar);
 
         setVisible(true);
     }
 
+    // Acción para agregar una tarea
+    private class AgregarTareaAction extends AbstractAction {
+        public AgregarTareaAction() {
+            super("Agregar Tarea");
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String nuevaTarea = txtNuevaTarea.getText().trim();
+            if (!nuevaTarea.isEmpty()) {
+                listModel.addElement(nuevaTarea);
+                txtNuevaTarea.setText(""); // Clear the text field after adding a task
+            }
+        }
+    }
+    
     // Acción para comenzar una tarea
     private class ComenzarTareaAction extends AbstractAction {
         public ComenzarTareaAction() {
@@ -90,5 +115,6 @@ public class VentanaLimpieza extends JFrame {
         }
     }
 }
+
 
 

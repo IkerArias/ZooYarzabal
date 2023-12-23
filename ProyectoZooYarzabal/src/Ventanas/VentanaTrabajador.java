@@ -160,6 +160,7 @@ public class VentanaTrabajador extends JFrame{
 					System.out.println(t.toString());
 					pw.flush();
 					pw.close();
+					abrirVentana(p_tra);
 				} catch (FileNotFoundException e1) {
 					// TODO: handle exception
 					JOptionPane.showMessageDialog(null, "No se ha podido registrar el trabajador, compruebe la ubicación del fichero.", "ERROR EN EL REGISTRO", JOptionPane.ERROR_MESSAGE);
@@ -229,13 +230,22 @@ public class VentanaTrabajador extends JFrame{
         		Contrasena_Empleados.add(empleado.getContrasena());
         	}
         	
+        	Empleado empleado = new Empleado();
+        	for (Empleado empleado2 : empleadosExistentes) {
+        		if(empleado2.getDNI().equals(DNI)) {
+        			empleado = empleado2;
+        		}
+        	}
+        	String puestoTrabajo = empleado.getPuestoEmpleado();
+        	
         	if(DNI_Empleados.contains(DNI) && Contrasena_Empleados.contains(contrasena)) {
         		JOptionPane.showMessageDialog(null, "Bienvenido " + nombreEmpleado, "Inicio de sesión correcto", JOptionPane.INFORMATION_MESSAGE);
+        		abrirVentana(puestoTrabajo);
         	}else {
         		JOptionPane.showMessageDialog(null, "El cliente no esta registrado", "Error en el inicio de sesion", JOptionPane.ERROR_MESSAGE);
 			}
         	
-
+        	
         	
         	
 //			String dni = txtDniIS.getText();
