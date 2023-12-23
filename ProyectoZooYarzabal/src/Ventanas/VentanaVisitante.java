@@ -111,7 +111,7 @@ public class VentanaVisitante extends JFrame{
         
         panelVideoyBotones.add(panelBotonesVideo, BorderLayout.SOUTH);
         
-   
+        //
 		
         JPanel pnlTexto = new JPanel(new GridBagLayout());
         // Agregaremos algunas condiciones para que luego el JTextArea se vea mejor
