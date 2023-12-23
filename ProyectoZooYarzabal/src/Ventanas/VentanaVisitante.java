@@ -8,8 +8,8 @@ import javax.swing.*;
 
 import Zoo.BordeadoTexto;
 import Zoo.ImagePanel;
-import uk.co.caprica.vlcj.factory.discovery.NativeDiscovery;
-import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
+// import uk.co.caprica.vlcj.factory.discovery.NativeDiscovery;
+// import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
 
 public class VentanaVisitante extends JFrame{
 	private static JFrame vActual;
@@ -17,16 +17,11 @@ public class VentanaVisitante extends JFrame{
 	private JButton btnEventos, btnMapa, btnInfoAnimales, btnVolver;
 	private JPanel pnlNorte, pnlBotones, pnlSur;
 	private JLabel lblTitulo;
-	private EmbeddedMediaPlayerComponent component;
+//	private EmbeddedMediaPlayerComponent component;
 	
-//	public static void main(String[] args) {
-//        SwingUtilities.invokeLater(() -> {
-//    		System.setProperty("jna.library.path", "C:/Program Files/VideoLAN/VLC");
-//            JFrame frame = new VentanaVisitante(null); // Para el JFrame anterior, pasa null
-//        });
-//    }
+
 	
-	public static void main(String[] args) {
+/*	public static void main(String[] args) {
 		System.out.println("a");
 		System.setProperty("jna.library.path", "C:/Program Files/VideoLAN/VLC");
 		miVentana = new VentanaVisitante(vActual);
@@ -34,9 +29,9 @@ public class VentanaVisitante extends JFrame{
 		miVentana.lanzarVideo("Go!azen 10_ _Zoriontasuna_.mp4");
 		System.out.println((new NativeDiscovery()).discoveredPath());
 
-	}
+	} */
 	
-	private static VentanaVisitante miVentana;
+	private static VentanaVisitante miVentana; 
 	
 	public VentanaVisitante(JFrame va) {
 		super();
@@ -47,15 +42,17 @@ public class VentanaVisitante extends JFrame{
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 		setBounds(500, 150, 1000, 600);
+		setBackground(new Color(173, 217, 230));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		
-		ImagePanel pnlTitulo = new ImagePanel("fondoJunglaParaPaneles.jpg");
+		JPanel pnlTitulo = new JPanel();
+		pnlTitulo.setBackground(new Color(173, 217, 230));
 		pnlTitulo.setLayout(new FlowLayout(FlowLayout.CENTER));
         BordeadoTexto lblTitulo = new BordeadoTexto( "BIENVENIDO AL ZOO" );
         Font fuente = new Font(lblTitulo.getFont().getName(), Font.BOLD, 30);
         lblTitulo.setFont(fuente);
-        lblTitulo.setForeground(Color.YELLOW);
+        lblTitulo.setForeground(new Color(70, 130, 180));
         pnlTitulo.add(lblTitulo);
         pnlTitulo.setPreferredSize(new Dimension(pnlTitulo.getPreferredSize().width, 50));
         add(pnlTitulo, BorderLayout.NORTH);
@@ -67,25 +64,32 @@ public class VentanaVisitante extends JFrame{
          */
         
         JPanel panelPrincipal = new JPanel(new BorderLayout());
+        panelPrincipal.setBackground(new Color(173, 217, 230));
         
         JPanel panelVideoyBotones = new JPanel(new BorderLayout());
+        panelVideoyBotones.setBackground(new Color(173, 217, 230));
         
         
-        component = new EmbeddedMediaPlayerComponent();    
-        panelVideoyBotones.add(component, BorderLayout.CENTER);
+//      component = new EmbeddedMediaPlayerComponent(); 
+        JPanel componenteVacio = new JPanel();
+        componenteVacio.setBackground(Color.BLACK);
+        panelVideoyBotones.add(componenteVacio, BorderLayout.CENTER);
         panelPrincipal.add(panelVideoyBotones, BorderLayout.CENTER);
         
         JPanel panelBotonesVideo = new JPanel(new FlowLayout());
+        panelBotonesVideo.setBackground(new Color(173, 217, 230));
         JButton botonPausa = new JButton( "Pausar" );
-        botonPausa.setBackground(Color.DARK_GRAY);
-        botonPausa.setForeground(Color.YELLOW);
+        botonPausa.setBackground(new Color(0, 128, 128));
+        botonPausa.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        botonPausa.setForeground(new Color(70, 130, 180));
         panelBotonesVideo.add(botonPausa);
         JButton botonReiniciar = new JButton( "Reiniciar" );
-        botonReiniciar.setBackground(Color.DARK_GRAY);
-        botonReiniciar.setForeground(Color.YELLOW);
+        botonReiniciar.setBackground(new Color(0, 128, 128));
+        botonReiniciar.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        botonReiniciar.setForeground(new Color(70, 130, 180));
         panelBotonesVideo.add(botonReiniciar);
         
-        botonPausa.addActionListener(new ActionListener() {
+/*        botonPausa.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -96,7 +100,9 @@ public class VentanaVisitante extends JFrame{
 					component.mediaPlayer().controls().play();
 				}
 			}
-		});
+		});			
+		
+		
         
         botonReiniciar.addActionListener(new ActionListener() {
 			
@@ -108,6 +114,8 @@ public class VentanaVisitante extends JFrame{
 				component.mediaPlayer().controls().play();
 			}
 		});
+		
+		*/
         
         panelVideoyBotones.add(panelBotonesVideo, BorderLayout.SOUTH);
         
@@ -127,49 +135,56 @@ public class VentanaVisitante extends JFrame{
         
         JTextArea areaTexto = new JTextArea();
         areaTexto.setOpaque(false);
-        areaTexto.setBackground(new Color(0, 0, 0, 0));
+        areaTexto.setBackground(new Color(173, 217, 230));
         areaTexto.setRows(10);
         areaTexto.setColumns(30);
         areaTexto.setText(
                 "¡Bienvenidos al Zoológico Zooyarzabal!\n\n" +
                 "Estamos emocionados de presentarles nuestro zoológico, donde podrán experimentar " +
                 "la diversidad y belleza de la vida animal. Algunas de las atracciones destacadas incluyen:\n\n" +
-                "- **Safari Africano**: Observa a majestuosos leones, elefantes, jirafas y rinocerontes en su hábitat natural.\n" +
-                "- **Acuario Marino**: Sumérgete en las profundidades del océano y descubre una variedad de peces tropicales, tiburones y corales vibrantes.\n" +
-                "- **Selva Amazónica**: Explora la rica biodiversidad de la selva amazónica, desde coloridos loros hasta intrigantes jaguares y perezosos.\n" +
-                "- **Habitat Polar**: Experimenta el frío ártico mientras observas a osos polares, pingüinos y otras criaturas adaptadas a las condiciones extremas.\n\n" +
+                "- Safari Africano: Observa a majestuosos leones, elefantes, jirafas y rinocerontes en su hábitat natural.\n" +
+                "- Acuario Marino : Sumérgete en las profundidades del océano y descubre una variedad de peces tropicales, tiburones y corales vibrantes.\n" +
+                "- Selva Amazónica : Explora la rica biodiversidad de la selva amazónica, desde coloridos loros hasta intrigantes jaguares y perezosos.\n" +
+                "- Habitat Polar : Experimenta el frío ártico mientras observas a osos polares, pingüinos y otras criaturas adaptadas a las condiciones extremas.\n\n" +
                 "Además de nuestras atracciones principales, ofrecemos espectáculos diarios, charlas educativas y actividades interactivas para toda la familia. " +
                 "Esperamos que disfruten de esta aventura única y se lleven recuerdos inolvidables de su visita a Zooyarzabal."
         );
         areaTexto.setEditable(false);
         areaTexto.setWrapStyleWord(true);
         areaTexto.setLineWrap(true);
-        Font fuenteLetra = new Font("Arial", Font.BOLD, 16);
+        Font fuenteLetra = new Font("Times New Roman", Font.BOLD, 13);
         areaTexto.setFont(fuenteLetra);
-        areaTexto.setForeground(Color.YELLOW);
+        areaTexto.setForeground(Color.BLACK);
         
-        ImagePanel imagePanel = new ImagePanel("fondoMarino.jpg");
+        JPanel imagePanel = new JPanel();
         imagePanel.setLayout(new BorderLayout());
+        imagePanel.setBackground(new Color(173, 217, 230));
         imagePanel.add(areaTexto, BorderLayout.CENTER);
         
         
         panelPrincipal.add(imagePanel, BorderLayout.SOUTH);
+        panelPrincipal.setBackground(new Color(173, 217, 230));
         add(panelPrincipal);
         
         
-        ImagePanel pnlBotones = new ImagePanel("fondoJunglaParaPaneles.jpg");
+        JPanel pnlBotones = new JPanel();
+        pnlBotones.setBackground(new Color(173, 217, 230));
         btnEventos = new JButton("EVENTOS");
-        btnEventos.setBackground(Color.DARK_GRAY);
-        btnEventos.setForeground(Color.YELLOW);
-		btnMapa = new JButton("MAPA");
-		btnMapa.setBackground(Color.DARK_GRAY);
-        btnMapa.setForeground(Color.YELLOW);
+        btnEventos.setBackground(new Color(0, 128, 128));
+        btnEventos.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        btnEventos.setForeground(new Color(70, 130, 180));
+        btnMapa = new JButton("MAPA");
+        btnMapa.setBackground(new Color(0, 128, 128));
+        btnMapa.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        btnMapa.setForeground(new Color(70, 130, 180));
 		btnInfoAnimales = new JButton("INFORMACIÓN DE ANIMALES");
-		btnInfoAnimales.setBackground(Color.DARK_GRAY);
-		btnInfoAnimales.setForeground(Color.YELLOW);
+		btnInfoAnimales.setBackground(new Color(0, 128, 128));
+		btnInfoAnimales.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnInfoAnimales.setForeground(new Color(70, 130, 180));
 		btnVolver = new JButton("VOLVER");
-		btnVolver.setBackground(Color.DARK_GRAY);
-		btnVolver.setForeground(Color.YELLOW);
+		btnVolver.setBackground(new Color(0, 128, 128));
+		btnVolver.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		btnVolver.setForeground(new Color(70, 130, 180));
 		pnlBotones.add(btnEventos);
 		pnlBotones.add(btnMapa);
 		pnlBotones.add(btnInfoAnimales);
@@ -208,10 +223,10 @@ public class VentanaVisitante extends JFrame{
 
 	
 }
-	private void lanzarVideo(String urlVideo) {
+	/* private void lanzarVideo(String urlVideo) {
 		component.mediaPlayer().audio().setVolume(75); // para que no salga a tope el volúmen
 		component.mediaPlayer().media().play(urlVideo);
-	}
+	} */
 }
 	
 	

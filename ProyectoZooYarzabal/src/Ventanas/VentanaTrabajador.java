@@ -3,6 +3,7 @@ package Ventanas;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,14 +41,19 @@ public class VentanaTrabajador extends JFrame{
 		setResizable(false);
 		setBackground(Color.DARK_GRAY);
 		
-		lblTitulo = new JLabel("INICIO DE SESIÓN TRABAJADOR");
-		pNorte = new JPanel();
-		getContentPane().add(pNorte, BorderLayout.NORTH);
-		pNorte.add(lblTitulo);
-		
-		pCentro = new JPanel(new GridLayout(2,2));
-		pCentrodch = new JPanel(new GridLayout(2,2));
-		pCentroizq = new JPanel(new GridLayout(4, 4));
+		 lblTitulo = new JLabel("INICIO DE SESIÓN TRABAJADOR");
+	     lblTitulo.setFont(new Font("Times New Roman", Font.BOLD, 20));
+
+	        pNorte = new JPanel();
+	        getRootPane().setBorder(BorderFactory.createMatteBorder(4, 4, 4, 4, new Color(30, 144, 255)));
+	        getContentPane().add(pNorte, BorderLayout.NORTH);
+	        pNorte.add(lblTitulo);
+
+	        pCentro = new JPanel(new GridLayout(2, 2));
+	        pCentro.setBackground(new Color(240, 240, 240));
+	        pCentrodch = new JPanel(new GridLayout(2, 2));
+	        pCentroizq = new JPanel(new GridLayout(4, 4));
+	        pCentroizq.setBackground(new Color(240, 240, 240));
 		
 		//Registro
 		lblPuestoR = new JLabel("Puesto de trabajo:");
@@ -83,21 +89,20 @@ public class VentanaTrabajador extends JFrame{
         
         //Boton Registro
         btnRegistro = new JButton("REGISTRARSE");
-        btnRegistro.setBackground(Color.DARK_GRAY);
-        btnRegistro.setForeground(Color.YELLOW);
         pCentro.add(btnRegistro);
         
         //Boton Inicio sesion
         btnInicio = new JButton("INICIAR SESIÓN");
-        btnInicio.setBackground(Color.DARK_GRAY);
-        btnInicio.setForeground(Color.YELLOW);
         pCentro.add(btnInicio);
         
         //Boton volver
         btnVolver = new JButton("VOLVER");
-        btnVolver.setBackground(Color.DARK_GRAY);
-        btnVolver.setForeground(Color.YELLOW);
-        ImagePanel pSur = new ImagePanel("fondoJunglaParaPaneles.jpg");
+        
+        btnVolver.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        btnInicio.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        btnRegistro.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        
+        JPanel pSur = new JPanel();
         getContentPane().add(pSur, BorderLayout.SOUTH);
         pSur.add(btnVolver);
         
@@ -156,80 +161,7 @@ public class VentanaTrabajador extends JFrame{
 		txtconR.setText("");
 		txtconIS.setText("");
 	}
-	/*
-    public VentanaTrabajador() {
-    	
-    //Paneles organizacion
-    JPanel pnlComboBox = new JPanel();
-    JPanel pnlUsuario = new JPanel();
-    JPanel pnlContrasenia = new JPanel();
-    	
-    // Crear una ventana 
-    ventana = new JFrame("Acceso de Trabajadores");
-    ventana.setSize(800, 125);
-    ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    ventana.setLayout(new FlowLayout());
-    
-    // Crear ComboBox para elegir el tipo de trabajador
-    tipoTrabajadorComboBox = new JComboBox<>();
-    tipoTrabajadorComboBox.addItem("Limpieza");
-    tipoTrabajadorComboBox.addItem("Mantenimiento");
-    tipoTrabajadorComboBox.addItem("Cuidador");
-    tipoTrabajadorComboBox.addItem("Veterinario");
-    tipoTrabajadorComboBox.addItem("Guía");
-    tipoTrabajadorComboBox.addItem("Administrador");
-    tipoTrabajadorComboBox.addItem("Diseñador de Eventos");
-    tipoTrabajadorComboBox.addItem("Taquillero");
-    tipoTrabajadorComboBox.addItem("Guardia de Seguridad");
-    	
-    
-    
-    // Crear campos de usuario y contraseña
-    usuarioTextField = new JTextField(15);
-    contrasenaPasswordField = new JPasswordField(15);
-
-    // Crear botón de inicio de sesión
-    JButton btnIniciarSesion = new JButton("Iniciar Sesión");
-    
-    // Agregar componentes a la ventana
-    pnlComboBox.add(new JLabel("Tipo de Trabajador:"));
-    pnlComboBox.add(tipoTrabajadorComboBox);
-    ventana.add(pnlComboBox, BorderLayout.NORTH);
-    
-    pnlUsuario.add(new JLabel("Usuario:"));
-    pnlUsuario.add(usuarioTextField);
-    ventana.add(pnlUsuario, BorderLayout.CENTER);
-    
-    pnlContrasenia.add(new JLabel("Contraseña:"));
-    pnlContrasenia.add(contrasenaPasswordField);
-    pnlContrasenia.add(btnIniciarSesion);
-    ventana.add(pnlContrasenia, BorderLayout.SOUTH);
-    
-    
-    
-    // Agregar ActionListener al botón de inicio de sesión
-    btnIniciarSesion.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String usuario = usuarioTextField.getText();
-            char[] contrasena = contrasenaPasswordField.getPassword();
-            String tipoTrabajador = (String) tipoTrabajadorComboBox.getSelectedItem();
-
-            if (verificarCredenciales(usuario, new String(contrasena))) {
-                JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso como " + tipoTrabajador);
-                abrirVentana(tipoTrabajador);
-            } else {
-                JOptionPane.showMessageDialog(null, "Usuario o contraseña incorrectos");
-            }
-
-            contrasenaPasswordField.setText("");
-
-		}
-    });
-    		//Mostrar la ventana
-    		ventana.setVisible(true);
-    
-    }*/
+	
     
 	    protected void abrirVentana(String tipoTrabajador) {
 		// TODO Auto-generated method stub

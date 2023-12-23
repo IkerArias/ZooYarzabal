@@ -6,7 +6,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,17 +33,9 @@ public class VentanaPrincipal {
 		ventana.setLocationRelativeTo(null);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        ImagePanel pnlTitulo = new ImagePanel("fondoJunglaParaPaneles.jpg");
-        pnlTitulo.setLayout(new FlowLayout());
-        BordeadoTexto lblTitulo = new BordeadoTexto( "ZOOYARZABAL" );
-        Font fuente = new Font(lblTitulo.getFont().getName(), Font.BOLD, 24);
-        lblTitulo.setFont(fuente);
-        lblTitulo.setForeground(Color.YELLOW);
-        pnlTitulo.add(lblTitulo);
-        pnlTitulo.setPreferredSize(new Dimension(pnlTitulo.getPreferredSize().width, 40));
-        ventana.add(pnlTitulo, BorderLayout.NORTH);
+        
         //Panel para los botones
-        ImagePanel pnlBotones = new ImagePanel("fondoJunglaParaPaneles.jpg");
+        JPanel pnlBotones = new JPanel();
         // Panel imagen
         JPanel pnlImagen = new JPanel();
         pnlImagen.setBackground(Color.DARK_GRAY);
@@ -54,7 +47,7 @@ public class VentanaPrincipal {
          * de la ventana que se abrirá al ejecutar el programa
          */
         
-        ImageIcon icono = new ImageIcon("iconoApp.jpg/"); 
+        ImageIcon icono = new ImageIcon("FotoLogo.png"); 
         Image imagen = icono.getImage();
         Image nuevaImagen = imagen.getScaledInstance(ventana.getWidth(), ventana.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon nuevoIcono = new ImageIcon(nuevaImagen);
@@ -64,10 +57,11 @@ public class VentanaPrincipal {
         
         // Botones para seleccionar si eres trabajador o visitante
         JButton btnTrabajador = new JButton("Soy Trabajador");
-        btnTrabajador.setBackground(Color.DARK_GRAY);
-        btnTrabajador.setForeground(Color.YELLOW);
+        btnTrabajador.setBackground(new Color(0, 128, 128));
+        btnTrabajador.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        btnTrabajador.setForeground(new Color(70, 130, 180));
         // ActionListener para el botón de trabajador
-        btnTrabajador.addActionListener(new ActionListener() {
+        btnTrabajador.addActionListener((ActionListener) new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ventana.dispose(); // Cerrar la ventana principal
@@ -76,8 +70,9 @@ public class VentanaPrincipal {
         });
         
         JButton btnVisitante = new JButton("Soy Visitante");
-        btnVisitante.setBackground(Color.DARK_GRAY);
-        btnVisitante.setForeground(Color.YELLOW);
+        btnVisitante.setBackground(new Color(0, 128, 128));
+        btnVisitante.setFont(new Font("Times New Roman", Font.BOLD, 14));
+        btnVisitante.setForeground(new Color(70, 130, 180));
         // ActionListener para el botón de visitante
         btnVisitante.addActionListener(new ActionListener() {
             @Override
@@ -97,8 +92,8 @@ public class VentanaPrincipal {
         });
         
         JButton btnSalir = new JButton("Salir");
-        btnSalir.setBackground(Color.DARK_GRAY);
-        btnSalir.setForeground(Color.YELLOW);
+        btnSalir.setBackground(new Color(0, 128, 128));
+        btnSalir.setFont(new Font("Times New Roman", Font.BOLD, 14));
         btnSalir.addActionListener((e)->{
         	System.exit(0);
         });
