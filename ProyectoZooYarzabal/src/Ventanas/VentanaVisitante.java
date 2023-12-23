@@ -28,7 +28,6 @@ public class VentanaVisitante extends JFrame{
 	
 	public static void main(String[] args) {
 		System.out.println("a");
-		// boolean found = (new NativeDiscovery()).discover();
 		System.setProperty("jna.library.path", "C:/Program Files/VideoLAN/VLC");
 		miVentana = new VentanaVisitante(vActual);
 		System.out.println("b");
