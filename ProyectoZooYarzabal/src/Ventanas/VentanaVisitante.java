@@ -18,7 +18,6 @@ public class VentanaVisitante extends JFrame{
 	private JPanel pnlNorte, pnlBotones, pnlSur;
 	private JLabel lblTitulo;
 //	private EmbeddedMediaPlayerComponent component;
-	
 
 	
 /*	public static void main(String[] args) {
@@ -42,20 +41,25 @@ public class VentanaVisitante extends JFrame{
 		setLayout(new BorderLayout());
 		setLocationRelativeTo(null);
 		setBounds(500, 150, 1000, 600);
-		setBackground(new Color(173, 217, 230));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+		/*
+		 * Para añadir el JScrollPane a toda la ventana vamos a crear un panel principal
+		 */
+		
+		JPanel panelContenidoPrincipal = new JPanel( new BorderLayout());
 		
 		JPanel pnlTitulo = new JPanel();
-		pnlTitulo.setBackground(new Color(173, 217, 230));
+//		pnlTitulo.setBackground(new Color(173, 217, 230));
 		pnlTitulo.setLayout(new FlowLayout(FlowLayout.CENTER));
-        BordeadoTexto lblTitulo = new BordeadoTexto( "BIENVENIDO AL ZOO" );
+        JLabel lblTitulo = new JLabel( "BIENVENIDO AL ZOO" );
+        lblTitulo.setForeground(new Color(70, 130, 180));
         Font fuente = new Font(lblTitulo.getFont().getName(), Font.BOLD, 30);
         lblTitulo.setFont(fuente);
         lblTitulo.setForeground(new Color(70, 130, 180));
         pnlTitulo.add(lblTitulo);
         pnlTitulo.setPreferredSize(new Dimension(pnlTitulo.getPreferredSize().width, 50));
-        add(pnlTitulo, BorderLayout.NORTH);
+        panelContenidoPrincipal.add(pnlTitulo, BorderLayout.NORTH);
         
         /*
          * Vamos a meter el video dentro de un panel y toda la ventana será controlada
@@ -64,10 +68,10 @@ public class VentanaVisitante extends JFrame{
          */
         
         JPanel panelPrincipal = new JPanel(new BorderLayout());
-        panelPrincipal.setBackground(new Color(173, 217, 230));
+//      panelPrincipal.setBackground(new Color(173, 217, 230));
         
         JPanel panelVideoyBotones = new JPanel(new BorderLayout());
-        panelVideoyBotones.setBackground(new Color(173, 217, 230));
+        panelVideoyBotones.setBackground(new Color(70, 130, 180));
         
         
 //      component = new EmbeddedMediaPlayerComponent(); 
@@ -79,15 +83,16 @@ public class VentanaVisitante extends JFrame{
         JPanel panelBotonesVideo = new JPanel(new FlowLayout());
         panelBotonesVideo.setBackground(new Color(173, 217, 230));
         JButton botonPausa = new JButton( "Pausar" );
-        botonPausa.setBackground(new Color(0, 128, 128));
+//      botonPausa.setBackground(new Color(0, 128, 128));
         botonPausa.setFont(new Font("Times New Roman", Font.BOLD, 14));
         botonPausa.setForeground(new Color(70, 130, 180));
         panelBotonesVideo.add(botonPausa);
         JButton botonReiniciar = new JButton( "Reiniciar" );
-        botonReiniciar.setBackground(new Color(0, 128, 128));
+//      botonReiniciar.setBackground(new Color(0, 128, 128));
         botonReiniciar.setFont(new Font("Times New Roman", Font.BOLD, 14));
         botonReiniciar.setForeground(new Color(70, 130, 180));
         panelBotonesVideo.add(botonReiniciar);
+        panelBotonesVideo.setBackground(new Color(70, 130, 180));
         
 /*        botonPausa.addActionListener(new ActionListener() {
 			
@@ -135,7 +140,7 @@ public class VentanaVisitante extends JFrame{
         
         JTextArea areaTexto = new JTextArea();
         areaTexto.setOpaque(false);
-        areaTexto.setBackground(new Color(173, 217, 230));
+        // areaTexto.setBackground(new Color(173, 217, 230));
         areaTexto.setRows(10);
         areaTexto.setColumns(30);
         areaTexto.setText(
@@ -154,42 +159,42 @@ public class VentanaVisitante extends JFrame{
         areaTexto.setLineWrap(true);
         Font fuenteLetra = new Font("Times New Roman", Font.BOLD, 13);
         areaTexto.setFont(fuenteLetra);
-        areaTexto.setForeground(Color.BLACK);
+        areaTexto.setForeground(new Color(70, 130, 180));
         
         JPanel imagePanel = new JPanel();
         imagePanel.setLayout(new BorderLayout());
-        imagePanel.setBackground(new Color(173, 217, 230));
+        imagePanel.setBackground(Color.WHITE);
         imagePanel.add(areaTexto, BorderLayout.CENTER);
         
         
         panelPrincipal.add(imagePanel, BorderLayout.SOUTH);
         panelPrincipal.setBackground(new Color(173, 217, 230));
-        add(panelPrincipal);
+        panelContenidoPrincipal.add(panelPrincipal, BorderLayout.CENTER);
         
         
         JPanel pnlBotones = new JPanel();
-        pnlBotones.setBackground(new Color(173, 217, 230));
+        pnlBotones.setBackground(new Color(70, 130, 180));
         btnEventos = new JButton("EVENTOS");
-        btnEventos.setBackground(new Color(0, 128, 128));
+//        btnEventos.setBackground(new Color(0, 128, 128));
         btnEventos.setFont(new Font("Times New Roman", Font.BOLD, 14));
         btnEventos.setForeground(new Color(70, 130, 180));
         btnMapa = new JButton("MAPA");
-        btnMapa.setBackground(new Color(0, 128, 128));
+//        btnMapa.setBackground(new Color(0, 128, 128));
         btnMapa.setFont(new Font("Times New Roman", Font.BOLD, 14));
         btnMapa.setForeground(new Color(70, 130, 180));
 		btnInfoAnimales = new JButton("INFORMACIÓN DE ANIMALES");
-		btnInfoAnimales.setBackground(new Color(0, 128, 128));
+//		btnInfoAnimales.setBackground(new Color(0, 128, 128));
 		btnInfoAnimales.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnInfoAnimales.setForeground(new Color(70, 130, 180));
 		btnVolver = new JButton("VOLVER");
-		btnVolver.setBackground(new Color(0, 128, 128));
+//		btnVolver.setBackground(new Color(0, 128, 128));
 		btnVolver.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		btnVolver.setForeground(new Color(70, 130, 180));
 		pnlBotones.add(btnEventos);
 		pnlBotones.add(btnMapa);
 		pnlBotones.add(btnInfoAnimales);
 		pnlBotones.add(btnVolver);
-		add(pnlBotones, BorderLayout.SOUTH);
+		panelContenidoPrincipal.add(pnlBotones, BorderLayout.SOUTH);
 		
 		btnEventos.addActionListener((e)->{
 			JOptionPane.showMessageDialog(null, "Has seleccionado la opción de Eventos", "EVENTOS", JOptionPane.INFORMATION_MESSAGE);
@@ -213,10 +218,13 @@ public class VentanaVisitante extends JFrame{
 	        vAnterior.setVisible(true);
 			vActual.dispose();
 	    });
-	
-//		JScrollPane jScrollPane = new JScrollPane(vActual);
-//		add(jScrollPane);
+
+		JScrollPane scrollPane = new JScrollPane(panelContenidoPrincipal);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		
+		
+		add(scrollPane);
 		setVisible(true);
 		
 		

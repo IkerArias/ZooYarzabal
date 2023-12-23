@@ -32,7 +32,7 @@ public class VisualizarBD {
 				Statement statement = conexion.createStatement();
 				String sent = "SELECT * FROM Empleados";
 				ResultSet rs = statement.executeQuery( sent );
-				while ( rs.next() ) {
+				while ( rs.next() ) { 
 					String DNI = rs.getString( "id_empleado" );
 					String NombreEmpleado = rs.getString( "nombre" );
 					String PuestoEmpleado = rs.getString( "puesto" );
@@ -60,10 +60,10 @@ public class VisualizarBD {
 					// empleado.setFechaContratacion(fechaContratacion);
 					empleado.setFechaContratacion(fechaSQL);
 					
-					empleados.add(empleado);
-					for ( Empleado emp : empleados ) {
-						System.out.println( emp + "\n" );
-					}
+//					empleados.add(empleado);
+//					for ( Empleado emp : empleados ) {
+//						System.out.println( emp + "\n" );
+//					}
 				}
 				rs.close();
 				

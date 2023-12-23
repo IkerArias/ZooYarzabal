@@ -12,7 +12,7 @@ public class BordeadoTexto extends JLabel {
 	
 	public BordeadoTexto( String textoLabel ) {
 		super( textoLabel );
-		setForeground( Color.YELLOW );
+		setForeground(new Color(70, 130, 180));
 		setFont( new Font( "Arial", Font.BOLD, 24 ));
 	}
 	

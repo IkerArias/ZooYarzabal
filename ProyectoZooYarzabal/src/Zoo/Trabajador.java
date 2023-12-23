@@ -3,6 +3,12 @@ package Zoo;
 public class Trabajador {
 	//Declaracion de atributos
 	protected String DNI;
+	@Override
+	public String toString() {
+		return "Trabajador [DNI=" + DNI + ", nombre=" + nombre + ", puesto=" + puesto + "]";
+	}
+
+
 	protected String nombre;
 	protected String apellido;
 	protected int horasDeTrabajo;

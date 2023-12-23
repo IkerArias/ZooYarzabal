@@ -38,7 +38,7 @@ public class VentanaPrincipal {
         JPanel pnlBotones = new JPanel();
         // Panel imagen
         JPanel pnlImagen = new JPanel();
-        pnlImagen.setBackground(Color.DARK_GRAY);
+        
         
        
         
@@ -57,7 +57,6 @@ public class VentanaPrincipal {
         
         // Botones para seleccionar si eres trabajador o visitante
         JButton btnTrabajador = new JButton("Soy Trabajador");
-        btnTrabajador.setBackground(new Color(0, 128, 128));
         btnTrabajador.setFont(new Font("Times New Roman", Font.BOLD, 14));
         btnTrabajador.setForeground(new Color(70, 130, 180));
         // ActionListener para el botón de trabajador
@@ -70,7 +69,6 @@ public class VentanaPrincipal {
         });
         
         JButton btnVisitante = new JButton("Soy Visitante");
-        btnVisitante.setBackground(new Color(0, 128, 128));
         btnVisitante.setFont(new Font("Times New Roman", Font.BOLD, 14));
         btnVisitante.setForeground(new Color(70, 130, 180));
         // ActionListener para el botón de visitante
@@ -92,11 +90,13 @@ public class VentanaPrincipal {
         });
         
         JButton btnSalir = new JButton("Salir");
-        btnSalir.setBackground(new Color(0, 128, 128));
+        btnSalir.setForeground(new Color(70, 130, 180));
         btnSalir.setFont(new Font("Times New Roman", Font.BOLD, 14));
         btnSalir.addActionListener((e)->{
         	System.exit(0);
         });
+        
+        pnlBotones.setBackground(new Color(70, 130, 180));
         pnlBotones.add(btnTrabajador);
         pnlBotones.add(btnVisitante);
         pnlBotones.add(btnSalir);

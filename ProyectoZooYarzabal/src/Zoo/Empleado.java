@@ -5,15 +5,40 @@ import java.sql.Date;
 import javax.xml.crypto.Data;
 
 public class Empleado {
-	String DNI, NombreEmpleado, PuestoEmpleado;
+	String DNI, NombreEmpleado, PuestoEmpleado, Contrasena;
+	
+	public String getContrasena() {
+		return Contrasena;
+	}
+	public void setContrasena(String contrasena) {
+		Contrasena = contrasena;
+	}
 	float SalarioEmpleado;
 	Date FechaContratacion;
+	
+	public Empleado() {
+		super();
+		DNI = "";
+		NombreEmpleado = "";
+		PuestoEmpleado = "";
+		SalarioEmpleado = 0;
+		FechaContratacion = null;
+		Contrasena = "";
+	}
+	public Empleado(String dNI, String nombreEmpleado, String puestoEmpleado, String contrasena) {
+		super();
+		DNI = dNI;
+		NombreEmpleado = nombreEmpleado;
+		PuestoEmpleado = puestoEmpleado;
+		Contrasena = contrasena;
+	}
+	
 	@Override
 	public String toString() {
 		return "Empleado [DNI=" + DNI + ", NombreEmpleado=" + NombreEmpleado + ", PuestoEmpleado=" + PuestoEmpleado
-				+ ", SalarioEmpleado=" + SalarioEmpleado + ", FechaContratacion=" + FechaContratacion + "]";
+				+ ", Contrasena=" + Contrasena + "]";
 	}
-	public String getDNI() {
+	public String getDNI() { 
 		return DNI;
 	}
 	public void setDNI(String dNI) {

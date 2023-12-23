@@ -110,7 +110,7 @@ public class Zoo {
 				String [] partes = linea.split(";");
 				String dni = partes[0];
 				String nom = partes[1];
-				String con = partes[2];
+				String con = partes[2]; 
 				Trabajador t = new Trabajador(dni,nom, con);
 				if(buscarTrabajador(dni) == null)
 					trabajadores.add(t);
@@ -124,13 +124,16 @@ public class Zoo {
 	public static void guardarListaTrabajadoresEnFichero(String nomfich) {
 		try {
 			PrintWriter pw = new PrintWriter(nomfich);
-			for(Trabajador t: trabajadores) {
-				pw.println(t.getDNI()+";"+t.getNombre()+";"+t.getCon());
-			}
+//			for(Trabajador t: trabajadores) {
+//				pw.println(t.getDNI()+";"+t.getNombre()+";"+t.getCon());
+//			}
+			
+			
 			pw.flush();
 			pw.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block //
+			System.err.println( "No se ha podido registrar el trabajador, compruebe la ubicación del fichero." );
 			e.printStackTrace();
 		}
 	}
