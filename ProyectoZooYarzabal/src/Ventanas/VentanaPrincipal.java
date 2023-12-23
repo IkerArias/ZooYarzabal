@@ -54,7 +54,7 @@ public class VentanaPrincipal {
          * de la ventana que se abrirá al ejecutar el programa
          */
         
-        ImageIcon icono = new ImageIcon("iconoApp.jpg/"); // Después cambiaremos la ruta de acceso de la imagen cuando demos con la imagen final deseada
+        ImageIcon icono = new ImageIcon("iconoApp.jpg/"); 
         Image imagen = icono.getImage();
         Image nuevaImagen = imagen.getScaledInstance(ventana.getWidth(), ventana.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon nuevoIcono = new ImageIcon(nuevaImagen);
