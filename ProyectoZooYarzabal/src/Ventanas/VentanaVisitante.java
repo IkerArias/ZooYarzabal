@@ -32,7 +32,7 @@ public class VentanaVisitante extends JFrame{
 		System.setProperty("jna.library.path", "C:/Program Files/VideoLAN/VLC");
 		miVentana = new VentanaVisitante(vActual);
 		System.out.println("b");
-		miVentana.lanzarVideo("C:\\Users\\unaio\\Downloads\\Go!azen 10_ _Zoriontasuna_.mp4");
+		miVentana.lanzarVideo("Go!azen 10_ _Zoriontasuna_.mp4");
 		System.out.println((new NativeDiscovery()).discoveredPath());
 
 	}
