@@ -51,7 +51,7 @@ public class VentanaVisitante extends JFrame{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		
-		ImagePanel pnlTitulo = new ImagePanel("C:/ProgIII/a.jpg/");
+		ImagePanel pnlTitulo = new ImagePanel("fondoJunglaParaPaneles.jpg");
 		pnlTitulo.setLayout(new FlowLayout(FlowLayout.CENTER));
         BordeadoTexto lblTitulo = new BordeadoTexto( "BIENVENIDO AL ZOO" );
         Font fuente = new Font(lblTitulo.getFont().getName(), Font.BOLD, 30);
@@ -152,7 +152,7 @@ public class VentanaVisitante extends JFrame{
         areaTexto.setFont(fuenteLetra);
         areaTexto.setForeground(Color.YELLOW);
         
-        ImagePanel imagePanel = new ImagePanel("C:/ProgIII/aab.jpg");
+        ImagePanel imagePanel = new ImagePanel("fondoMarino.jpg");
         imagePanel.setLayout(new BorderLayout());
         imagePanel.add(areaTexto, BorderLayout.CENTER);
         
@@ -161,7 +161,7 @@ public class VentanaVisitante extends JFrame{
         add(panelPrincipal);
         
         
-        ImagePanel pnlBotones = new ImagePanel("C:/ProgIII/a.jpg/");
+        ImagePanel pnlBotones = new ImagePanel("fondoJunglaParaPaneles.jpg");
         btnEventos = new JButton("EVENTOS");
         btnEventos.setBackground(Color.DARK_GRAY);
         btnEventos.setForeground(Color.YELLOW);

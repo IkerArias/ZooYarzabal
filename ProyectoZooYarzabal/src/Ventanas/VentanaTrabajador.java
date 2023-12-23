@@ -97,7 +97,7 @@ public class VentanaTrabajador extends JFrame{
         btnVolver = new JButton("VOLVER");
         btnVolver.setBackground(Color.DARK_GRAY);
         btnVolver.setForeground(Color.YELLOW);
-        ImagePanel pSur = new ImagePanel("C:/ProgIII/a.jpg/");
+        ImagePanel pSur = new ImagePanel("fondoJunglaParaPaneles.jpg");
         getContentPane().add(pSur, BorderLayout.SOUTH);
         pSur.add(btnVolver);
         

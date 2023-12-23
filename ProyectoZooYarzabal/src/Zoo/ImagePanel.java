@@ -2,6 +2,7 @@ package Zoo;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.net.URL;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -10,9 +11,16 @@ public class ImagePanel extends JPanel {
 	
 	private Image imagenFondo;
 	
-	public ImagePanel(String imagePath) {
-		this.imagenFondo = new ImageIcon(imagePath).getImage();
+	public ImagePanel(String string) {
+		this.imagenFondo = new ImageIcon(string).getImage();
 	}
+
+//	public ImagePanel(URL resource) {
+//		// TODO Auto-generated constructor stub
+//		this.imagenFondo = new ImageIcon(resource).getImage();
+//	}
+
+
 
 	@Override
 	protected void paintComponent(Graphics g) {

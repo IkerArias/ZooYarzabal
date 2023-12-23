@@ -32,7 +32,7 @@ public class VentanaPrincipal {
 		ventana.setLocationRelativeTo(null);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-        ImagePanel pnlTitulo = new ImagePanel("C:/ProgIII/a.jpg/");
+        ImagePanel pnlTitulo = new ImagePanel("fondoJunglaParaPaneles.jpg");
         pnlTitulo.setLayout(new FlowLayout());
         BordeadoTexto lblTitulo = new BordeadoTexto( "ZOOYARZABAL" );
         Font fuente = new Font(lblTitulo.getFont().getName(), Font.BOLD, 24);
@@ -42,7 +42,7 @@ public class VentanaPrincipal {
         pnlTitulo.setPreferredSize(new Dimension(pnlTitulo.getPreferredSize().width, 40));
         ventana.add(pnlTitulo, BorderLayout.NORTH);
         //Panel para los botones
-        ImagePanel pnlBotones = new ImagePanel("C:/ProgIII/a.jpg/");
+        ImagePanel pnlBotones = new ImagePanel("fondoJunglaParaPaneles.jpg");
         // Panel imagen
         JPanel pnlImagen = new JPanel();
         pnlImagen.setBackground(Color.DARK_GRAY);
@@ -54,7 +54,7 @@ public class VentanaPrincipal {
          * de la ventana que se abrirá al ejecutar el programa
          */
         
-        ImageIcon icono = new ImageIcon("C:/Users/unaio/Downloads/cb759431-2a8d-4f81-bee2-bf67662f9579.jpg/"); // Después cambiaremos la ruta de acceso de la imagen cuando demos con la imagen final deseada
+        ImageIcon icono = new ImageIcon("iconoApp.jpg/"); // Después cambiaremos la ruta de acceso de la imagen cuando demos con la imagen final deseada
         Image imagen = icono.getImage();
         Image nuevaImagen = imagen.getScaledInstance(ventana.getWidth(), ventana.getHeight(), Image.SCALE_SMOOTH);
         ImageIcon nuevoIcono = new ImageIcon(nuevaImagen);
