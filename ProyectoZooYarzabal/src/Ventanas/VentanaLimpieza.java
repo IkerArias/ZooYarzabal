@@ -1,6 +1,7 @@
 package Ventanas;
 
 import java.awt.BorderLayout;
+
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -12,6 +13,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
+
+
 public class VentanaLimpieza extends JFrame {
     protected JFrame vActual, vAnterior;
     protected JButton btnVolver, btnComenzar, btnFinalizar, btnAnadir, btnAgregar;
@@ -19,7 +22,7 @@ public class VentanaLimpieza extends JFrame {
     protected JList<String> listaTareas;
     protected DefaultListModel<String> listModel;
     protected JTextField txtNuevaTarea;
-
+    
     public VentanaLimpieza(JFrame va) {
         super();
         vActual = this;
@@ -76,7 +79,7 @@ public class VentanaLimpieza extends JFrame {
             String nuevaTarea = txtNuevaTarea.getText().trim();
             if (!nuevaTarea.isEmpty()) {
                 listModel.addElement(nuevaTarea);
-                txtNuevaTarea.setText(""); // Clear the text field after adding a task
+                txtNuevaTarea.setText(""); 
             }
         }
     }
@@ -115,6 +118,7 @@ public class VentanaLimpieza extends JFrame {
         }
     }
 }
+
 
 
 
