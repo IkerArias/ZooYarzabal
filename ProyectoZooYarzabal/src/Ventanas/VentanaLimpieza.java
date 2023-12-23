@@ -46,7 +46,7 @@ public class VentanaLimpieza extends JFrame {
             vActual.dispose();
         });
 
-        // Panel sur con botones
+        // Panel con botones
         pSur = new JPanel();
         getContentPane().add(pSur, BorderLayout.SOUTH);
         pSur.add(btnComenzar);
@@ -66,7 +66,7 @@ public class VentanaLimpieza extends JFrame {
         public void actionPerformed(ActionEvent e) {
             int selectedIndex = listaTareas.getSelectedIndex();
             if (selectedIndex != -1) {
-                // Aquí puedes implementar la lógica para iniciar la tarea seleccionada
+                
                 String tareaSeleccionada = listModel.getElementAt(selectedIndex);
                 System.out.println("Comenzar tarea: " + tareaSeleccionada);
             }
